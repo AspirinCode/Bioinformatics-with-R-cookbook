@@ -16,7 +16,7 @@ plot(x=pl, y=sl, xlab="Petal length", ylab="Sepal length",col="black", main="Var
 ```
 
 
-[png2](https://github.com/Chengshu21/bio-start-with-R/blob/master/Chapter%201/Visualizing%20data/Visualizing%20out_put_2_0.png)
+[png2](https://github.com/Chengshu21/Bioinformatics-with-R-cookbook/blob/master/Chapter-1-bio-start-with-R-master/MD/9、Visualizing%20out_put_2_0.png)
 
 
 
@@ -26,7 +26,7 @@ boxplot(Sepal.Length~Species, data=iris, ylab="sepal length", xlab="Species", ma
 ```
 
 
-[png3](https://github.com/Chengshu21/bio-start-with-R/blob/master/Chapter%201/Visualizing%20data/Visualizing%20output_3_0.png)
+[png3](https://github.com/Chengshu21/Bioinformatics-with-R-cookbook/blob/master/Chapter-1-bio-start-with-R-master/MD/9、Visualizing%20output_3_0.png)
 
 
 
@@ -37,7 +37,7 @@ plot(x=genex, xlim=c(1,5), type='l', main="line diagram")
 ```
 
 
-[png4](https://github.com/Chengshu21/bio-start-with-R/blob/master/Chapter%201/Visualizing%20data/Visualizing%20output_4_0.png)
+[png4](https://github.com/Chengshu21/Bioinformatics-with-R-cookbook/blob/master/Chapter-1-bio-start-with-R-master/MD/9、Visualizing%20output_4_0.png)
 
 
 
@@ -48,5 +48,5 @@ hist(x)
 ```
 
 
-[png5](https://github.com/Chengshu21/bio-start-with-R/blob/master/Chapter%201/Visualizing%20data/Visualizing%20output_5_0.png)
+[png5](https://github.com/Chengshu21/Bioinformatics-with-R-cookbook/blob/master/Chapter-1-bio-start-with-R-master/MD/9、Visualizing%20output_5_0.png)
 
