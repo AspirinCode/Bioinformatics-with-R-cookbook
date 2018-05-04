@@ -1,0 +1,3172 @@
+
+# GO Annotation
+
+
+```R
+source("http://www.bioconductor.org/biocLite.R") 
+```
+
+    Bioconductor version 3.6 (BiocInstaller 1.28.0), ?biocLite for help
+    
+
+
+```R
+biocLite(c("org.Hs.eg.db", "GO.db"))
+```
+
+    BioC_mirror: https://bioconductor.org
+    Using Bioconductor 3.6 (BiocInstaller 1.28.0), R 3.4.4 (2018-03-15).
+    Installing package(s) 'org.Hs.eg.db', 'GO.db'
+    installing the source packages 'org.Hs.eg.db', 'GO.db'
+    
+    Old packages: 'nlme'
+    
+
+
+```R
+biocLite(c("topGO", "ALL"))
+```
+
+    BioC_mirror: https://bioconductor.org
+    Using Bioconductor 3.6 (BiocInstaller 1.28.0), R 3.4.4 (2018-03-15).
+    Installing package(s) 'topGO', 'ALL'
+    
+
+    package 'topGO' successfully unpacked and MD5 sums checked
+    
+    The downloaded binary packages are in
+    	C:\Users\Master1\AppData\Local\Temp\RtmpcPqJLr\downloaded_packages
+    
+
+    installing the source package 'ALL'
+    
+    Old packages: 'nlme'
+    
+
+
+```R
+library(org.Hs.eg.db) # loads the library
+myEIDs <- c("1", "10", "100") # Create vecotor of input Entrez IDs
+myGO <- unlist(org.Hs.egGO[[as.character(myEIDs[1])]])
+myGO_All <- mget(myEIDs, org.Hs.egGO)  # find the GO annotation for each of our genes
+myGO_All
+```
+
+
+<dl>
+	<dt>$`1`</dt>
+		<dd><dl>
+	<dt>$`GO:0002576`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0002576'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0008150`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0008150'</dd>
+	<dt>$Evidence</dt>
+		<dd>'ND'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0043312`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0043312'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0005576`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0005576'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0005576`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0005576'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0005615`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0005615'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0031012`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0031012'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0031093`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0031093'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0034774`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0034774'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0070062`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0070062'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0072562`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0072562'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:1904813`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:1904813'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0003674`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0003674'</dd>
+	<dt>$Evidence</dt>
+		<dd>'ND'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+	<dt>$`10`</dt>
+		<dd><dl>
+	<dt>$`GO:0006805`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0006805'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0005829`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0005829'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0004060`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0004060'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0005515`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0005515'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IPI'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+	<dt>$`100`</dt>
+		<dd><dl>
+	<dt>$`GO:0001666`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0001666'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0001821`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0001821'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0001829`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0001829'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0001889`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0001889'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0001890`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0001890'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0002314`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0002314'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0002636`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0002636'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0002686`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0002686'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0002906`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0002906'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0006154`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0006154'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0006154`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0006154'</dd>
+	<dt>$Evidence</dt>
+		<dd>'ISS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0006157`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0006157'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0007155`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0007155'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0007568`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0007568'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0009168`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0009168'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0010460`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0010460'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0030890`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0030890'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0032261`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0032261'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IMP'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0033089`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0033089'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0033197`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0033197'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0033632`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0033632'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0042110`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0042110'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0042323`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0042323'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0042493`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0042493'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0042542`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0042542'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0043101`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0043101'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0043103`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0043103'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IBA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0043278`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0043278'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0045987`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0045987'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0046061`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0046061'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0046103`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0046103'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0046103`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0046103'</dd>
+	<dt>$Evidence</dt>
+		<dd>'ISS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0046111`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0046111'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0046638`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0046638'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0048286`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0048286'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0048541`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0048541'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0048566`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0048566'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0050728`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0050728'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0050850`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0050850'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0050862`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0050862'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0060169`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0060169'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0060407`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0060407'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0070244`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0070244'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0070256`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0070256'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0005615`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0005615'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0005764`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0005764'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0005829`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0005829'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IBA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0005829`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0005829'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0009897`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0009897'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0009986`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0009986'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0016020`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0016020'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0030054`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0030054'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0032839`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0032839'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0043025`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0043025'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0060205`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0060205'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0001883`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0001883'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0004000`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0004000'</dd>
+	<dt>$Evidence</dt>
+		<dd>'EXP'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0004000`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0004000'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0004000`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0004000'</dd>
+	<dt>$Evidence</dt>
+		<dd>'ISS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0005515`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0005515'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IPI'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0008270`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0008270'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IMP'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0008270`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0008270'</dd>
+	<dt>$Evidence</dt>
+		<dd>'ISS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+
+
+```R
+GOgenes <- org.Hs.egGO2ALLEGS[["GO:0008150"]] #perform the mapping in the reverse manner, from GO ID to Entrez genes
+head(GOgenes)
+GOgenes_All <- mget("GO:0008150", org.Hs.egGO2ALLEGS) # To get genes for the input GO terms
+head(GOgenes_All)
+```
+
+
+<dl class=dl-horizontal>
+	<dt>ND</dt>
+		<dd>'1'</dd>
+	<dt>TAS</dt>
+		<dd>'1'</dd>
+	<dt>IDA</dt>
+		<dd>'2'</dd>
+	<dt>IEA</dt>
+		<dd>'2'</dd>
+	<dt>TAS</dt>
+		<dd>'2'</dd>
+	<dt>TAS</dt>
+		<dd>'9'</dd>
+</dl>
+
+
+
+    IOPub data rate exceeded.
+    The notebook server will temporarily stop sending output
+    to the client in order to avoid crashing it.
+    To change this limit, set the config variable
+    `--NotebookApp.iopub_data_rate_limit`.
+    
+
+# Enrichment
+
+
+```R
+library(topGO) # loads the data library
+library(ALL) # loads the data library
+```
+
+
+```R
+data(ALL)
+data(geneList)
+affyLib <-paste(annotation(ALL), "db", sep=".")
+library(package=affyLib, character.only=TRUE)
+
+# check how many genes can be considered as DE genes (p-value < 0.01) from the geneList data for GO enrichment
+sum(topDiffGenes(geneList)) 
+
+myGOData <- new("topGOdata", ontology="BP", allGenes=geneList, geneSel=topDiffGenes,
+                nodeSize=10, annot= annFUN.db, affyLib=affyLib)   # create a `topGOdata` object
+Myenrichment_Fisher <- runTest(myGOData, algorithm= "classic", statistic="fisher")
+Myenrichment_Fisher      #enrichment test (Fisher test) 
+ 
+score(Myenrichment_Fisher) # Displays p values for every GO term
+geneData(Myenrichment_Fisher) # A table showing Medata data for enrichment
+
+Myenrichment_KS <- runTest(myGOData, algorithm= "classic", statistic="ks")
+enrich_table <-GenTable(myGOData, classicFisher=Myenrichment_Fisher,topNodes = 20)
+head(enrich_table) # get the enrichment results as table
+```
+
+    
+    
+
+
+50
+
+
+    
+    Building most specific GOs .....
+    Warning message in result_fetch(res@ptr, n = n):
+    "Don't need to call dbFetch() for statements, only for queries"	( 1595 GO terms found. )
+    
+    Build GO DAG topology ..........
+    	( 4433 GO terms and 10140 relations. )
+    
+    Annotating nodes ...............
+    	( 310 genes annotated to the GO terms. )
+    
+    			 -- Classic Algorithm -- 
+    
+    		 the algorithm is scoring 955 nontrivial nodes
+    		 parameters: 
+    			 test statistic: fisher
+    
+
+
+    
+    Description:  
+    Ontology: BP 
+    'classic' algorithm with the 'fisher' test
+    1070 GO terms scored: 14 terms with p < 0.01
+    Annotation data:
+        Annotated genes: 310 
+        Significant genes: 46 
+        Min. no. of genes annotated to a GO: 10 
+        Nontrivial nodes: 955 
+
+
+
+<dl class=dl-horizontal>
+	<dt>GO:0000003</dt>
+		<dd>0.959016403325264</dd>
+	<dt>GO:0000070</dt>
+		<dd>0.998766400187422</dd>
+	<dt>GO:0000075</dt>
+		<dd>0.836607297575511</dd>
+	<dt>GO:0000077</dt>
+		<dd>0.682102680813784</dd>
+	<dt>GO:0000079</dt>
+		<dd>0.64305604052381</dd>
+	<dt>GO:0000082</dt>
+		<dd>0.964005562911553</dd>
+	<dt>GO:0000086</dt>
+		<dd>0.324671612891714</dd>
+	<dt>GO:0000122</dt>
+		<dd>0.556298309163917</dd>
+	<dt>GO:0000165</dt>
+		<dd>0.997906642659979</dd>
+	<dt>GO:0000209</dt>
+		<dd>0.600467754856061</dd>
+	<dt>GO:0000226</dt>
+		<dd>0.975975361954539</dd>
+	<dt>GO:0000278</dt>
+		<dd>0.997020736048014</dd>
+	<dt>GO:0000280</dt>
+		<dd>0.998694448083751</dd>
+	<dt>GO:0000302</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0000723</dt>
+		<dd>0.55431857573783</dd>
+	<dt>GO:0000819</dt>
+		<dd>0.997917774967639</dd>
+	<dt>GO:0000902</dt>
+		<dd>0.969715025346272</dd>
+	<dt>GO:0000904</dt>
+		<dd>0.834461185274051</dd>
+	<dt>GO:0000910</dt>
+		<dd>0.682102680813784</dd>
+	<dt>GO:0001501</dt>
+		<dd>0.213709798511067</dd>
+	<dt>GO:0001516</dt>
+		<dd>0.256529187648146</dd>
+	<dt>GO:0001568</dt>
+		<dd>0.969715025346272</dd>
+	<dt>GO:0001667</dt>
+		<dd>0.380128481172844</dd>
+	<dt>GO:0001676</dt>
+		<dd>0.0110107316675022</dd>
+	<dt>GO:0001775</dt>
+		<dd>0.118907623727222</dd>
+	<dt>GO:0001776</dt>
+		<dd>0.451782063320734</dd>
+	<dt>GO:0001816</dt>
+		<dd>0.271901293192929</dd>
+	<dt>GO:0001817</dt>
+		<dd>0.271901293192929</dd>
+	<dt>GO:0001818</dt>
+		<dd>0.64305604052381</dd>
+	<dt>GO:0001819</dt>
+		<dd>0.500633703293527</dd>
+	<dt>GO:0001906</dt>
+		<dd>0.0296439009117456</dd>
+	<dt>GO:0001909</dt>
+		<dd>0.0134683667990939</dd>
+	<dt>GO:0001932</dt>
+		<dd>0.43622150351173</dd>
+	<dt>GO:0001933</dt>
+		<dd>0.213098671505701</dd>
+	<dt>GO:0001934</dt>
+		<dd>0.573016820566937</dd>
+	<dt>GO:0001944</dt>
+		<dd>0.969715025346272</dd>
+	<dt>GO:0001959</dt>
+		<dd>0.137551606293564</dd>
+	<dt>GO:0002009</dt>
+		<dd>0.915452840641964</dd>
+	<dt>GO:0002237</dt>
+		<dd>0.77913772259646</dd>
+	<dt>GO:0002250</dt>
+		<dd>0.169582829314288</dd>
+	<dt>GO:0002252</dt>
+		<dd>0.0467833697133886</dd>
+	<dt>GO:0002253</dt>
+		<dd>8.79921043746638e-05</dd>
+	<dt>GO:0002260</dt>
+		<dd>0.451782063320734</dd>
+	<dt>GO:0002263</dt>
+		<dd>0.273952212721781</dd>
+	<dt>GO:0002274</dt>
+		<dd>0.370608329763918</dd>
+	<dt>GO:0002275</dt>
+		<dd>0.213098671505701</dd>
+	<dt>GO:0002283</dt>
+		<dd>0.132939990976845</dd>
+	<dt>GO:0002285</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0002366</dt>
+		<dd>0.273952212721781</dd>
+	<dt>GO:0002367</dt>
+		<dd>0.600467754856061</dd>
+	<dt>GO:0002376</dt>
+		<dd>0.39238196343625</dd>
+	<dt>GO:0002377</dt>
+		<dd>0.085251631099831</dd>
+	<dt>GO:0002440</dt>
+		<dd>0.0352741179547466</dd>
+	<dt>GO:0002443</dt>
+		<dd>0.245011650514746</dd>
+	<dt>GO:0002444</dt>
+		<dd>0.213098671505701</dd>
+	<dt>GO:0002446</dt>
+		<dd>0.132939990976845</dd>
+	<dt>GO:0002449</dt>
+		<dd>0.0706043434303018</dd>
+	<dt>GO:0002456</dt>
+		<dd>0.0454178345676092</dd>
+	<dt>GO:0002460</dt>
+		<dd>0.184696841521814</dd>
+	<dt>GO:0002520</dt>
+		<dd>0.271901293192929</dd>
+	<dt>GO:0002521</dt>
+		<dd>0.0581737643553899</dd>
+	<dt>GO:0002576</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0002682</dt>
+		<dd>0.0544714887088108</dd>
+	<dt>GO:0002683</dt>
+		<dd>0.0227549286940001</dd>
+	<dt>GO:0002684</dt>
+		<dd>0.0686568062147378</dd>
+	<dt>GO:0002685</dt>
+		<dd>0.859928695231889</dd>
+	<dt>GO:0002694</dt>
+		<dd>0.0245257213913195</dd>
+	<dt>GO:0002696</dt>
+		<dd>0.0199843369053531</dd>
+	<dt>GO:0002697</dt>
+		<dd>0.0381841057876599</dd>
+	<dt>GO:0002698</dt>
+		<dd>0.0296439009117456</dd>
+	<dt>GO:0002699</dt>
+		<dd>0.629594191735141</dd>
+	<dt>GO:0002700</dt>
+		<dd>0.213709798511067</dd>
+	<dt>GO:0002703</dt>
+		<dd>0.105921210302618</dd>
+	<dt>GO:0002705</dt>
+		<dd>0.77913772259646</dd>
+	<dt>GO:0002706</dt>
+		<dd>0.0721660425614635</dd>
+	<dt>GO:0002708</dt>
+		<dd>0.717698467906219</dd>
+	<dt>GO:0002712</dt>
+		<dd>0.834461185274051</dd>
+	<dt>GO:0002714</dt>
+		<dd>0.834461185274051</dd>
+	<dt>GO:0002764</dt>
+		<dd>0.00045697897643347</dd>
+	<dt>GO:0002768</dt>
+		<dd>0.00045697897643347</dd>
+	<dt>GO:0002790</dt>
+		<dd>0.77913772259646</dd>
+	<dt>GO:0002791</dt>
+		<dd>0.64305604052381</dd>
+	<dt>GO:0002793</dt>
+		<dd>0.834461185274051</dd>
+	<dt>GO:0002819</dt>
+		<dd>0.132939990976845</dd>
+	<dt>GO:0002821</dt>
+		<dd>0.881550440263209</dd>
+	<dt>GO:0002822</dt>
+		<dd>0.109999569744816</dd>
+	<dt>GO:0002824</dt>
+		<dd>0.881550440263209</dd>
+	<dt>GO:0002889</dt>
+		<dd>0.834461185274051</dd>
+	<dt>GO:0002891</dt>
+		<dd>0.834461185274051</dd>
+	<dt>GO:0003006</dt>
+		<dd>0.950595900178962</dd>
+	<dt>GO:0003008</dt>
+		<dd>0.974535471138907</dd>
+	<dt>GO:0006066</dt>
+		<dd>0.213709798511067</dd>
+	<dt>GO:0006082</dt>
+		<dd>0.0191839437530726</dd>
+	<dt>GO:0006139</dt>
+		<dd>0.321745629219939</dd>
+	<dt>GO:0006259</dt>
+		<dd>0.912095876407345</dd>
+	<dt>GO:0006260</dt>
+		<dd>0.963179732429966</dd>
+	<dt>GO:0006261</dt>
+		<dd>0.749984896107973</dd>
+	<dt>GO:0006275</dt>
+		<dd>0.912674227423619</dd>
+	<dt>GO:0006281</dt>
+		<dd>0.468670944445948</dd>
+	<dt>GO:0006310</dt>
+		<dd>0.213709798511067</dd>
+	<dt>GO:0006325</dt>
+		<dd>0.974535471138907</dd>
+	<dt>GO:0006351</dt>
+		<dd>0.222952134498742</dd>
+	<dt>GO:0006355</dt>
+		<dd>0.126294346353587</dd>
+	<dt>GO:0006357</dt>
+		<dd>0.42012806100192</dd>
+	<dt>GO:0006366</dt>
+		<dd>0.406725893570045</dd>
+	<dt>GO:0006396</dt>
+		<dd>0.849816314217168</dd>
+	<dt>GO:0006412</dt>
+		<dd>0.199975944351983</dd>
+	<dt>GO:0006417</dt>
+		<dd>0.167678689691901</dd>
+	<dt>GO:0006461</dt>
+		<dd>0.643725650873578</dd>
+	<dt>GO:0006464</dt>
+		<dd>0.696072000937016</dd>
+	<dt>GO:0006468</dt>
+		<dd>0.373880043079294</dd>
+	<dt>GO:0006470</dt>
+		<dd>0.0352741179547466</dd>
+	<dt>GO:0006497</dt>
+		<dd>0.682102680813784</dd>
+	<dt>GO:0006505</dt>
+		<dd>0.64305604052381</dd>
+	<dt>GO:0006506</dt>
+		<dd>0.64305604052381</dd>
+	<dt>GO:0006508</dt>
+		<dd>0.998931282154036</dd>
+	<dt>GO:0006511</dt>
+		<dd>0.921613365979558</dd>
+	<dt>GO:0006518</dt>
+		<dd>0.380128481172844</dd>
+	<dt>GO:0006575</dt>
+		<dd>0.256529187648146</dd>
+	<dt>GO:0006629</dt>
+		<dd>0.174902396734725</dd>
+	<dt>GO:0006631</dt>
+		<dd>0.00118154813365704</dd>
+	<dt>GO:0006633</dt>
+		<dd>0.00239705390185652</dd>
+	<dt>GO:0006636</dt>
+		<dd>0.00519762487454807</dd>
+	<dt>GO:0006643</dt>
+		<dd>0.868485663700939</dd>
+	<dt>GO:0006644</dt>
+		<dd>0.404729222409008</dd>
+	<dt>GO:0006650</dt>
+		<dd>0.842498103733373</dd>
+	<dt>GO:0006656</dt>
+		<dd>0.600467754856061</dd>
+	<dt>GO:0006661</dt>
+		<dd>0.750790873383401</dd>
+	<dt>GO:0006664</dt>
+		<dd>0.64305604052381</dd>
+	<dt>GO:0006690</dt>
+		<dd>0.0634752531988871</dd>
+	<dt>GO:0006692</dt>
+		<dd>0.167678689691901</dd>
+	<dt>GO:0006693</dt>
+		<dd>0.167678689691901</dd>
+	<dt>GO:0006725</dt>
+		<dd>0.321745629219939</dd>
+	<dt>GO:0006793</dt>
+		<dd>0.215876937550414</dd>
+	<dt>GO:0006796</dt>
+		<dd>0.215876937550414</dd>
+	<dt>GO:0006807</dt>
+		<dd>0.134220538226243</dd>
+	<dt>GO:0006810</dt>
+		<dd>0.366139542238249</dd>
+	<dt>GO:0006811</dt>
+		<dd>0.105921210302618</dd>
+	<dt>GO:0006812</dt>
+		<dd>0.305903484392941</dd>
+	<dt>GO:0006873</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0006874</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0006875</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0006886</dt>
+		<dd>0.98492216876379</dd>
+	<dt>GO:0006887</dt>
+		<dd>0.222086464746376</dd>
+	<dt>GO:0006897</dt>
+		<dd>0.269490117357974</dd>
+	<dt>GO:0006909</dt>
+		<dd>0.504687011056216</dd>
+	<dt>GO:0006915</dt>
+		<dd>0.645091143761198</dd>
+	<dt>GO:0006928</dt>
+		<dd>0.202541678742788</dd>
+	<dt>GO:0006935</dt>
+		<dd>0.839009473315578</dd>
+	<dt>GO:0006950</dt>
+		<dd>0.0594776399244185</dd>
+	<dt>GO:0006952</dt>
+		<dd>0.242228976720739</dd>
+	<dt>GO:0006954</dt>
+		<dd>0.59201003295712</dd>
+	<dt>GO:0006955</dt>
+		<dd>0.0574425733210458</dd>
+	<dt>GO:0006974</dt>
+		<dd>0.669602440383036</dd>
+	<dt>GO:0006977</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0006979</dt>
+		<dd>0.928636465491014</dd>
+	<dt>GO:0006996</dt>
+		<dd>0.983236326065466</dd>
+	<dt>GO:0006997</dt>
+		<dd>0.939802188577454</dd>
+	<dt>GO:0007010</dt>
+		<dd>0.868775959043026</dd>
+	<dt>GO:0007015</dt>
+		<dd>0.0410026067414107</dd>
+	<dt>GO:0007017</dt>
+		<dd>0.97120738869992</dd>
+	<dt>GO:0007030</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0007049</dt>
+		<dd>0.927609417533294</dd>
+	<dt>GO:0007050</dt>
+		<dd>0.805354124176759</dd>
+	<dt>GO:0007051</dt>
+		<dd>0.985254818736347</dd>
+	<dt>GO:0007052</dt>
+		<dd>0.996983371518747</dd>
+	<dt>GO:0007059</dt>
+		<dd>0.999761498878399</dd>
+	<dt>GO:0007062</dt>
+		<dd>0.932856998950748</dd>
+	<dt>GO:0007088</dt>
+		<dd>0.972746992805097</dd>
+	<dt>GO:0007091</dt>
+		<dd>0.885055946113121</dd>
+	<dt>GO:0007093</dt>
+		<dd>0.681756003429811</dd>
+	<dt>GO:0007094</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0007098</dt>
+		<dd>0.77913772259646</dd>
+	<dt>GO:0007127</dt>
+		<dd>0.682102680813784</dd>
+	<dt>GO:0007154</dt>
+		<dd>0.0270814004670172</dd>
+	<dt>GO:0007155</dt>
+		<dd>0.0153721328135321</dd>
+	<dt>GO:0007159</dt>
+		<dd>0.0634752531988871</dd>
+	<dt>GO:0007162</dt>
+		<dd>0.0547021269481351</dd>
+	<dt>GO:0007163</dt>
+		<dd>0.717698467906219</dd>
+	<dt>GO:0007165</dt>
+		<dd>0.195251014894455</dd>
+	<dt>GO:0007166</dt>
+		<dd>0.0535604038276972</dd>
+	<dt>GO:0007167</dt>
+		<dd>0.19861842105189</dd>
+	<dt>GO:0007169</dt>
+		<dd>0.219483202862296</dd>
+	<dt>GO:0007259</dt>
+		<dd>0.213709798511067</dd>
+	<dt>GO:0007267</dt>
+		<dd>0.43621782249192</dd>
+	<dt>GO:0007275</dt>
+		<dd>0.626836618496142</dd>
+	<dt>GO:0007276</dt>
+		<dd>0.757464000706342</dd>
+	<dt>GO:0007281</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0007283</dt>
+		<dd>0.95724742370311</dd>
+	<dt>GO:0007292</dt>
+		<dd>0.55431857573783</dd>
+	<dt>GO:0007346</dt>
+		<dd>0.863629159584886</dd>
+	<dt>GO:0007399</dt>
+		<dd>0.804898370143723</dd>
+	<dt>GO:0007417</dt>
+		<dd>0.834461185274051</dd>
+	<dt>GO:0007565</dt>
+		<dd>0.717698467906219</dd>
+	<dt>GO:0007568</dt>
+		<dd>0.928636465491014</dd>
+	<dt>GO:0007569</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0007584</dt>
+		<dd>0.55431857573783</dd>
+	<dt>GO:0008104</dt>
+		<dd>0.948586268848185</dd>
+	<dt>GO:0008150</dt>
+		<dd>1</dd>
+	<dt>GO:0008152</dt>
+		<dd>0.151978396602643</dd>
+	<dt>GO:0008156</dt>
+		<dd>0.949253039517512</dd>
+	<dt>GO:0008202</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0008219</dt>
+		<dd>0.584135407960546</dd>
+	<dt>GO:0008283</dt>
+		<dd>0.195251014894455</dd>
+	<dt>GO:0008284</dt>
+		<dd>0.168005069631228</dd>
+	<dt>GO:0008285</dt>
+		<dd>0.950595900178962</dd>
+	<dt>GO:0008610</dt>
+		<dd>0.21892715591461</dd>
+	<dt>GO:0008654</dt>
+		<dd>0.302451587308259</dd>
+	<dt>GO:0009056</dt>
+		<dd>0.97885584649736</dd>
+	<dt>GO:0009057</dt>
+		<dd>0.984632427007388</dd>
+	<dt>GO:0009058</dt>
+		<dd>0.160426180358627</dd>
+	<dt>GO:0009059</dt>
+		<dd>0.0394931185721656</dd>
+	<dt>GO:0009247</dt>
+		<dd>0.64305604052381</dd>
+	<dt>GO:0009306</dt>
+		<dd>0.682102680813784</dd>
+	<dt>GO:0009314</dt>
+		<dd>0.915452840641964</dd>
+	<dt>GO:0009605</dt>
+		<dd>0.0077626741125121</dd>
+	<dt>GO:0009607</dt>
+		<dd>0.0932657807211215</dd>
+	<dt>GO:0009611</dt>
+		<dd>0.868485663700939</dd>
+	<dt>GO:0009615</dt>
+		<dd>0.085251631099831</dd>
+	<dt>GO:0009617</dt>
+		<dd>0.694497698373022</dd>
+	<dt>GO:0009628</dt>
+		<dd>0.996382657622047</dd>
+	<dt>GO:0009653</dt>
+		<dd>0.953353263805973</dd>
+	<dt>GO:0009719</dt>
+		<dd>0.838383265040635</dd>
+	<dt>GO:0009725</dt>
+		<dd>0.819802768720721</dd>
+	<dt>GO:0009790</dt>
+		<dd>0.819802768720721</dd>
+	<dt>GO:0009792</dt>
+		<dd>0.859928695231889</dd>
+	<dt>GO:0009888</dt>
+		<dd>0.827580283722303</dd>
+	<dt>GO:0009889</dt>
+		<dd>0.181726904392941</dd>
+	<dt>GO:0009890</dt>
+		<dd>0.958829107134872</dd>
+	<dt>GO:0009891</dt>
+		<dd>0.337787171931393</dd>
+	<dt>GO:0009892</dt>
+		<dd>0.739585462687713</dd>
+	<dt>GO:0009893</dt>
+		<dd>0.314870839494948</dd>
+	<dt>GO:0009894</dt>
+		<dd>0.946673707320878</dd>
+	<dt>GO:0009896</dt>
+		<dd>0.872327775112519</dd>
+	<dt>GO:0009966</dt>
+		<dd>0.414242920031442</dd>
+	<dt>GO:0009967</dt>
+		<dd>0.576672350898798</dd>
+	<dt>GO:0009968</dt>
+		<dd>0.0157434721673769</dd>
+	<dt>GO:0009987</dt>
+		<dd>1</dd>
+	<dt>GO:0009991</dt>
+		<dd>0.0171079442520043</dd>
+	<dt>GO:0010033</dt>
+		<dd>0.369019871322363</dd>
+	<dt>GO:0010035</dt>
+		<dd>0.924081797108909</dd>
+	<dt>GO:0010243</dt>
+		<dd>0.757464000706342</dd>
+	<dt>GO:0010256</dt>
+		<dd>0.964005562911553</dd>
+	<dt>GO:0010389</dt>
+		<dd>0.146741640264137</dd>
+	<dt>GO:0010458</dt>
+		<dd>0.451782063320734</dd>
+	<dt>GO:0010467</dt>
+		<dd>0.103106731412917</dd>
+	<dt>GO:0010468</dt>
+		<dd>0.0803277086718058</dd>
+	<dt>GO:0010469</dt>
+		<dd>0.992573651237092</dd>
+	<dt>GO:0010498</dt>
+		<dd>0.886655682359715</dd>
+	<dt>GO:0010556</dt>
+		<dd>0.174902396734725</dd>
+	<dt>GO:0010557</dt>
+		<dd>0.370760525665607</dd>
+	<dt>GO:0010558</dt>
+		<dd>0.932856998950748</dd>
+	<dt>GO:0010562</dt>
+		<dd>0.620622884620129</dd>
+	<dt>GO:0010563</dt>
+		<dd>0.43621782249192</dd>
+	<dt>GO:0010564</dt>
+		<dd>0.893437235356102</dd>
+	<dt>GO:0010604</dt>
+		<dd>0.452049200880685</dd>
+	<dt>GO:0010605</dt>
+		<dd>0.587951100100467</dd>
+	<dt>GO:0010608</dt>
+		<dd>0.199975944351983</dd>
+	<dt>GO:0010628</dt>
+		<dd>0.406725893570045</dd>
+	<dt>GO:0010629</dt>
+		<dd>0.450581114870056</dd>
+	<dt>GO:0010631</dt>
+		<dd>0.137551606293564</dd>
+	<dt>GO:0010632</dt>
+		<dd>0.300498090587562</dd>
+	<dt>GO:0010638</dt>
+		<dd>0.594901850096174</dd>
+	<dt>GO:0010639</dt>
+		<dd>0.836607297575511</dd>
+	<dt>GO:0010646</dt>
+		<dd>0.458251233961554</dd>
+	<dt>GO:0010647</dt>
+		<dd>0.599658907540711</dd>
+	<dt>GO:0010648</dt>
+		<dd>0.0157434721673769</dd>
+	<dt>GO:0010720</dt>
+		<dd>0.269490117357974</dd>
+	<dt>GO:0010876</dt>
+		<dd>0.109966177850091</dd>
+	<dt>GO:0010941</dt>
+		<dd>0.834167706530332</dd>
+	<dt>GO:0010942</dt>
+		<dd>0.525135288963703</dd>
+	<dt>GO:0010948</dt>
+		<dd>0.822244002164324</dd>
+	<dt>GO:0010965</dt>
+		<dd>0.899723559100401</dd>
+	<dt>GO:0010975</dt>
+		<dd>0.256529187648146</dd>
+	<dt>GO:0010976</dt>
+		<dd>0.213709798511067</dd>
+	<dt>GO:0012501</dt>
+		<dd>0.645091143761198</dd>
+	<dt>GO:0014070</dt>
+		<dd>0.899574850525052</dd>
+	<dt>GO:0015031</dt>
+		<dd>0.939260742682098</dd>
+	<dt>GO:0015833</dt>
+		<dd>0.953261495136101</dd>
+	<dt>GO:0016032</dt>
+		<dd>0.996382657622047</dd>
+	<dt>GO:0016043</dt>
+		<dd>0.990866645933563</dd>
+	<dt>GO:0016053</dt>
+		<dd>0.0686568062147378</dd>
+	<dt>GO:0016064</dt>
+		<dd>0.881550440263209</dd>
+	<dt>GO:0016070</dt>
+		<dd>0.131011091411194</dd>
+	<dt>GO:0016192</dt>
+		<dd>0.280564200692195</dd>
+	<dt>GO:0016233</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0016254</dt>
+		<dd>0.451782063320734</dd>
+	<dt>GO:0016310</dt>
+		<dd>0.35083014674144</dd>
+	<dt>GO:0016311</dt>
+		<dd>0.0295938371877668</dd>
+	<dt>GO:0016477</dt>
+		<dd>0.0594983199547322</dd>
+	<dt>GO:0016567</dt>
+		<dd>0.881209085230856</dd>
+	<dt>GO:0016569</dt>
+		<dd>0.969715025346272</dd>
+	<dt>GO:0016570</dt>
+		<dd>0.969715025346272</dd>
+	<dt>GO:0016572</dt>
+		<dd>0.881550440263209</dd>
+	<dt>GO:0018105</dt>
+		<dd>0.623396132612647</dd>
+	<dt>GO:0018108</dt>
+		<dd>0.722890295029957</dd>
+	<dt>GO:0018130</dt>
+		<dd>0.40543122162923</dd>
+	<dt>GO:0018193</dt>
+		<dd>0.705614344464595</dd>
+	<dt>GO:0018209</dt>
+		<dd>0.623396132612647</dd>
+	<dt>GO:0018212</dt>
+		<dd>0.722890295029957</dd>
+	<dt>GO:0019058</dt>
+		<dd>0.859928695231889</dd>
+	<dt>GO:0019216</dt>
+		<dd>0.0295938371877668</dd>
+	<dt>GO:0019219</dt>
+		<dd>0.445386215317604</dd>
+	<dt>GO:0019220</dt>
+		<dd>0.523998372190156</dd>
+	<dt>GO:0019221</dt>
+		<dd>0.0381841057876599</dd>
+	<dt>GO:0019222</dt>
+		<dd>0.192007592659378</dd>
+	<dt>GO:0019369</dt>
+		<dd>0.682102680813784</dd>
+	<dt>GO:0019371</dt>
+		<dd>0.451782063320734</dd>
+	<dt>GO:0019372</dt>
+		<dd>0.859928695231889</dd>
+	<dt>GO:0019438</dt>
+		<dd>0.40543122162923</dd>
+	<dt>GO:0019538</dt>
+		<dd>0.479905625527998</dd>
+	<dt>GO:0019637</dt>
+		<dd>0.584135407960546</dd>
+	<dt>GO:0019724</dt>
+		<dd>0.881550440263209</dd>
+	<dt>GO:0019725</dt>
+		<dd>0.516762284200079</dd>
+	<dt>GO:0019752</dt>
+		<dd>0.0191839437530726</dd>
+	<dt>GO:0019941</dt>
+		<dd>0.921613365979558</dd>
+	<dt>GO:0019953</dt>
+		<dd>0.836607297575511</dd>
+	<dt>GO:0022008</dt>
+		<dd>0.745320768304297</dd>
+	<dt>GO:0022402</dt>
+		<dd>0.979055715157026</dd>
+	<dt>GO:0022406</dt>
+		<dd>0.344938040849562</dd>
+	<dt>GO:0022407</dt>
+		<dd>0.0426788175472557</dd>
+	<dt>GO:0022408</dt>
+		<dd>0.504687011056216</dd>
+	<dt>GO:0022409</dt>
+		<dd>0.0634752531988871</dd>
+	<dt>GO:0022411</dt>
+		<dd>0.899723559100401</dd>
+	<dt>GO:0022412</dt>
+		<dd>0.928636465491014</dd>
+	<dt>GO:0022414</dt>
+		<dd>0.959016403325264</dd>
+	<dt>GO:0022603</dt>
+		<dd>0.885055946113121</dd>
+	<dt>GO:0022607</dt>
+		<dd>0.78682845161756</dd>
+	<dt>GO:0022610</dt>
+		<dd>0.0185986647005263</dd>
+	<dt>GO:0023014</dt>
+		<dd>0.998551592170127</dd>
+	<dt>GO:0023051</dt>
+		<dd>0.458251233961554</dd>
+	<dt>GO:0023052</dt>
+		<dd>0.0214509701635869</dd>
+	<dt>GO:0023056</dt>
+		<dd>0.599658907540711</dd>
+	<dt>GO:0023057</dt>
+		<dd>0.0157434721673769</dd>
+	<dt>GO:0030001</dt>
+		<dd>0.109966177850091</dd>
+	<dt>GO:0030003</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0030010</dt>
+		<dd>0.859928695231889</dd>
+	<dt>GO:0030029</dt>
+		<dd>0.305515759271282</dd>
+	<dt>GO:0030030</dt>
+		<dd>0.181213221500629</dd>
+	<dt>GO:0030031</dt>
+		<dd>0.0721660425614635</dd>
+	<dt>GO:0030036</dt>
+		<dd>0.305515759271282</dd>
+	<dt>GO:0030071</dt>
+		<dd>0.868485663700939</dd>
+	<dt>GO:0030097</dt>
+		<dd>0.116946769243465</dd>
+	<dt>GO:0030098</dt>
+		<dd>0.0227549286940001</dd>
+	<dt>GO:0030099</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0030100</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0030154</dt>
+		<dd>0.0422172671805389</dd>
+	<dt>GO:0030155</dt>
+		<dd>0.0236038467863858</dd>
+	<dt>GO:0030162</dt>
+		<dd>0.979889143458312</dd>
+	<dt>GO:0030163</dt>
+		<dd>0.964273772736602</dd>
+	<dt>GO:0030182</dt>
+		<dd>0.500633703293527</dd>
+	<dt>GO:0030217</dt>
+		<dd>0.0227549286940001</dd>
+	<dt>GO:0030258</dt>
+		<dd>0.269490117357974</dd>
+	<dt>GO:0030330</dt>
+		<dd>0.600467754856061</dd>
+	<dt>GO:0030334</dt>
+		<dd>0.0306917790272618</dd>
+	<dt>GO:0030335</dt>
+		<dd>0.169582829314288</dd>
+	<dt>GO:0030595</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0030855</dt>
+		<dd>0.978602722276443</dd>
+	<dt>GO:0030879</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0031023</dt>
+		<dd>0.663122819379463</dd>
+	<dt>GO:0031099</dt>
+		<dd>0.939802188577454</dd>
+	<dt>GO:0031100</dt>
+		<dd>0.881550440263209</dd>
+	<dt>GO:0031145</dt>
+		<dd>0.912674227423619</dd>
+	<dt>GO:0031175</dt>
+		<dd>0.403461618220793</dd>
+	<dt>GO:0031294</dt>
+		<dd>0.213709798511067</dd>
+	<dt>GO:0031323</dt>
+		<dd>0.244734305284565</dd>
+	<dt>GO:0031324</dt>
+		<dd>0.898649543521096</dd>
+	<dt>GO:0031325</dt>
+		<dd>0.362281155705453</dd>
+	<dt>GO:0031326</dt>
+		<dd>0.181726904392941</dd>
+	<dt>GO:0031327</dt>
+		<dd>0.958829107134872</dd>
+	<dt>GO:0031328</dt>
+		<dd>0.337787171931393</dd>
+	<dt>GO:0031329</dt>
+		<dd>0.921613365979558</dd>
+	<dt>GO:0031331</dt>
+		<dd>0.839009473315578</dd>
+	<dt>GO:0031334</dt>
+		<dd>0.475550256393061</dd>
+	<dt>GO:0031341</dt>
+		<dd>0.0454178345676092</dd>
+	<dt>GO:0031344</dt>
+		<dd>0.300498090587562</dd>
+	<dt>GO:0031346</dt>
+		<dd>0.213709798511067</dd>
+	<dt>GO:0031347</dt>
+		<dd>0.681756003429811</dd>
+	<dt>GO:0031348</dt>
+		<dd>0.451782063320734</dd>
+	<dt>GO:0031349</dt>
+		<dd>0.828842778742689</dd>
+	<dt>GO:0031396</dt>
+		<dd>0.750790873383401</dd>
+	<dt>GO:0031397</dt>
+		<dd>0.663122819379463</dd>
+	<dt>GO:0031398</dt>
+		<dd>0.885055946113121</dd>
+	<dt>GO:0031399</dt>
+		<dd>0.45882453101417</dd>
+	<dt>GO:0031400</dt>
+		<dd>0.317427540346992</dd>
+	<dt>GO:0031401</dt>
+		<dd>0.685439405381847</dd>
+	<dt>GO:0031570</dt>
+		<dd>0.749984896107973</dd>
+	<dt>GO:0031571</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0031577</dt>
+		<dd>0.915452840641964</dd>
+	<dt>GO:0031647</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0031667</dt>
+		<dd>0.0125408612172428</dd>
+	<dt>GO:0032101</dt>
+		<dd>0.593125853346552</dd>
+	<dt>GO:0032102</dt>
+		<dd>0.137551606293564</dd>
+	<dt>GO:0032103</dt>
+		<dd>0.723712203253037</dd>
+	<dt>GO:0032200</dt>
+		<dd>0.55431857573783</dd>
+	<dt>GO:0032268</dt>
+		<dd>0.373880043079294</dd>
+	<dt>GO:0032269</dt>
+		<dd>0.382146446555791</dd>
+	<dt>GO:0032270</dt>
+		<dd>0.44429476648807</dd>
+	<dt>GO:0032271</dt>
+		<dd>0.213709798511067</dd>
+	<dt>GO:0032273</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0032355</dt>
+		<dd>0.600467754856061</dd>
+	<dt>GO:0032446</dt>
+		<dd>0.881209085230856</dd>
+	<dt>GO:0032465</dt>
+		<dd>0.55431857573783</dd>
+	<dt>GO:0032496</dt>
+		<dd>0.749984896107973</dd>
+	<dt>GO:0032501</dt>
+		<dd>0.525662051501921</dd>
+	<dt>GO:0032502</dt>
+		<dd>0.10346814489734</dd>
+	<dt>GO:0032504</dt>
+		<dd>0.722890295029957</dd>
+	<dt>GO:0032535</dt>
+		<dd>0.451782063320734</dd>
+	<dt>GO:0032774</dt>
+		<dd>0.222952134498742</dd>
+	<dt>GO:0032787</dt>
+		<dd>0.00118154813365704</dd>
+	<dt>GO:0032844</dt>
+		<dd>0.370608329763918</dd>
+	<dt>GO:0032845</dt>
+		<dd>0.132939990976845</dd>
+	<dt>GO:0032846</dt>
+		<dd>0.881550440263209</dd>
+	<dt>GO:0032870</dt>
+		<dd>0.629594191735141</dd>
+	<dt>GO:0032879</dt>
+		<dd>0.450173001583565</dd>
+	<dt>GO:0032880</dt>
+		<dd>0.939260742682098</dd>
+	<dt>GO:0032886</dt>
+		<dd>0.924081797108909</dd>
+	<dt>GO:0032940</dt>
+		<dd>0.462214788351517</dd>
+	<dt>GO:0032943</dt>
+		<dd>0.0199843369053531</dd>
+	<dt>GO:0032944</dt>
+		<dd>0.0199843369053531</dd>
+	<dt>GO:0032946</dt>
+		<dd>0.00781099312492499</dd>
+	<dt>GO:0032956</dt>
+		<dd>0.0707869257116544</dd>
+	<dt>GO:0032970</dt>
+		<dd>0.0707869257116544</dd>
+	<dt>GO:0032989</dt>
+		<dd>0.899723559100401</dd>
+	<dt>GO:0033002</dt>
+		<dd>0.928636465491014</dd>
+	<dt>GO:0033036</dt>
+		<dd>0.866537945995962</dd>
+	<dt>GO:0033043</dt>
+		<dd>0.973798996411157</dd>
+	<dt>GO:0033044</dt>
+		<dd>0.989243441851681</dd>
+	<dt>GO:0033045</dt>
+		<dd>0.924081797108909</dd>
+	<dt>GO:0033046</dt>
+		<dd>0.749984896107973</dd>
+	<dt>GO:0033047</dt>
+		<dd>0.912674227423619</dd>
+	<dt>GO:0033048</dt>
+		<dd>0.717698467906219</dd>
+	<dt>GO:0033135</dt>
+		<dd>0.389252878638977</dd>
+	<dt>GO:0033365</dt>
+		<dd>0.976407681456082</dd>
+	<dt>GO:0033554</dt>
+		<dd>0.202541678742788</dd>
+	<dt>GO:0033559</dt>
+		<dd>0.0128202114634386</dd>
+	<dt>GO:0033674</dt>
+		<dd>0.565876982109575</dd>
+	<dt>GO:0033993</dt>
+		<dd>0.911192623504293</dd>
+	<dt>GO:0034097</dt>
+		<dd>0.0993185225457478</dd>
+	<dt>GO:0034248</dt>
+		<dd>0.167678689691901</dd>
+	<dt>GO:0034250</dt>
+		<dd>0.213709798511067</dd>
+	<dt>GO:0034502</dt>
+		<dd>0.717698467906219</dd>
+	<dt>GO:0034504</dt>
+		<dd>0.949253039517512</dd>
+	<dt>GO:0034599</dt>
+		<dd>0.881550440263209</dd>
+	<dt>GO:0034613</dt>
+		<dd>0.968089075299365</dd>
+	<dt>GO:0034614</dt>
+		<dd>0.881550440263209</dd>
+	<dt>GO:0034622</dt>
+		<dd>0.620544847684885</dd>
+	<dt>GO:0034641</dt>
+		<dd>0.470523815883256</dd>
+	<dt>GO:0034645</dt>
+		<dd>0.293890123313009</dd>
+	<dt>GO:0034654</dt>
+		<dd>0.40543122162923</dd>
+	<dt>GO:0035556</dt>
+		<dd>0.545592562892355</dd>
+	<dt>GO:0036211</dt>
+		<dd>0.696072000937016</dd>
+	<dt>GO:0036230</dt>
+		<dd>0.157903794150302</dd>
+	<dt>GO:0040007</dt>
+		<dd>0.911192623504293</dd>
+	<dt>GO:0040008</dt>
+		<dd>0.856482081080662</dd>
+	<dt>GO:0040011</dt>
+		<dd>0.145760807790109</dd>
+	<dt>GO:0040012</dt>
+		<dd>0.0743041571803185</dd>
+	<dt>GO:0040013</dt>
+		<dd>0.451782063320734</dd>
+	<dt>GO:0040017</dt>
+		<dd>0.219483202862296</dd>
+	<dt>GO:0042035</dt>
+		<dd>0.199975944351983</dd>
+	<dt>GO:0042060</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0042089</dt>
+		<dd>0.234047773443938</dd>
+	<dt>GO:0042098</dt>
+		<dd>0.0306917790272618</dd>
+	<dt>GO:0042102</dt>
+		<dd>0.0122486193904476</dd>
+	<dt>GO:0042107</dt>
+		<dd>0.234047773443938</dd>
+	<dt>GO:0042108</dt>
+		<dd>0.199975944351983</dd>
+	<dt>GO:0042110</dt>
+		<dd>0.0373936168636955</dd>
+	<dt>GO:0042113</dt>
+		<dd>0.045766390295133</dd>
+	<dt>GO:0042119</dt>
+		<dd>0.157903794150302</dd>
+	<dt>GO:0042127</dt>
+		<dd>0.222952134498742</dd>
+	<dt>GO:0042129</dt>
+		<dd>0.0306917790272618</dd>
+	<dt>GO:0042157</dt>
+		<dd>0.269490117357974</dd>
+	<dt>GO:0042158</dt>
+		<dd>0.234047773443938</dd>
+	<dt>GO:0042176</dt>
+		<dd>0.957318315828841</dd>
+	<dt>GO:0042221</dt>
+		<dd>0.622878558055028</dd>
+	<dt>GO:0042325</dt>
+		<dd>0.458251233961554</dd>
+	<dt>GO:0042326</dt>
+		<dd>0.213098671505701</dd>
+	<dt>GO:0042327</dt>
+		<dd>0.597120159719411</dd>
+	<dt>GO:0042330</dt>
+		<dd>0.839009473315578</dd>
+	<dt>GO:0042493</dt>
+		<dd>0.991126142579915</dd>
+	<dt>GO:0042592</dt>
+		<dd>0.145245195739313</dd>
+	<dt>GO:0042742</dt>
+		<dd>0.834461185274051</dd>
+	<dt>GO:0042770</dt>
+		<dd>0.600467754856061</dd>
+	<dt>GO:0042787</dt>
+		<dd>0.924081797108909</dd>
+	<dt>GO:0042886</dt>
+		<dd>0.953261495136101</dd>
+	<dt>GO:0042981</dt>
+		<dd>0.881332671694644</dd>
+	<dt>GO:0043009</dt>
+		<dd>0.859928695231889</dd>
+	<dt>GO:0043043</dt>
+		<dd>0.234047773443938</dd>
+	<dt>GO:0043065</dt>
+		<dd>0.694497698373022</dd>
+	<dt>GO:0043066</dt>
+		<dd>0.963179732429966</dd>
+	<dt>GO:0043067</dt>
+		<dd>0.881332671694644</dd>
+	<dt>GO:0043068</dt>
+		<dd>0.694497698373022</dd>
+	<dt>GO:0043069</dt>
+		<dd>0.963179732429966</dd>
+	<dt>GO:0043085</dt>
+		<dd>0.777390406920939</dd>
+	<dt>GO:0043086</dt>
+		<dd>0.264177565041144</dd>
+	<dt>GO:0043161</dt>
+		<dd>0.886655682359715</dd>
+	<dt>GO:0043170</dt>
+		<dd>0.0682364139949818</dd>
+	<dt>GO:0043207</dt>
+		<dd>0.0674637050508519</dd>
+	<dt>GO:0043254</dt>
+		<dd>0.516762284200079</dd>
+	<dt>GO:0043269</dt>
+		<dd>0.881550440263209</dd>
+	<dt>GO:0043299</dt>
+		<dd>0.242870188506558</dd>
+	<dt>GO:0043312</dt>
+		<dd>0.132939990976845</dd>
+	<dt>GO:0043405</dt>
+		<dd>0.982032251110184</dd>
+	<dt>GO:0043406</dt>
+		<dd>0.982032251110184</dd>
+	<dt>GO:0043408</dt>
+		<dd>0.99566542594366</dd>
+	<dt>GO:0043410</dt>
+		<dd>0.992573651237092</dd>
+	<dt>GO:0043412</dt>
+		<dd>0.696072000937016</dd>
+	<dt>GO:0043434</dt>
+		<dd>0.475550256393061</dd>
+	<dt>GO:0043436</dt>
+		<dd>0.0191839437530726</dd>
+	<dt>GO:0043491</dt>
+		<dd>0.881550440263209</dd>
+	<dt>GO:0043542</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0043549</dt>
+		<dd>0.431409703046146</dd>
+	<dt>GO:0043603</dt>
+		<dd>0.135350337709788</dd>
+	<dt>GO:0043604</dt>
+		<dd>0.380128481172844</dd>
+	<dt>GO:0043623</dt>
+		<dd>0.453956959422405</dd>
+	<dt>GO:0043632</dt>
+		<dd>0.921613365979558</dd>
+	<dt>GO:0043651</dt>
+		<dd>0.00103799561825741</dd>
+	<dt>GO:0043900</dt>
+		<dd>0.234047773443938</dd>
+	<dt>GO:0043933</dt>
+		<dd>0.472919220347719</dd>
+	<dt>GO:0044085</dt>
+		<dd>0.634716006823694</dd>
+	<dt>GO:0044087</dt>
+		<dd>0.647958352977599</dd>
+	<dt>GO:0044089</dt>
+		<dd>0.591976916270953</dd>
+	<dt>GO:0044092</dt>
+		<dd>0.480716900171761</dd>
+	<dt>GO:0044093</dt>
+		<dd>0.849350026387284</dd>
+	<dt>GO:0044237</dt>
+		<dd>0.1390197679888</dd>
+	<dt>GO:0044238</dt>
+		<dd>0.126928904683919</dd>
+	<dt>GO:0044248</dt>
+		<dd>0.985706120719335</dd>
+	<dt>GO:0044249</dt>
+		<dd>0.439040975545974</dd>
+	<dt>GO:0044255</dt>
+		<dd>0.138066415818025</dd>
+	<dt>GO:0044257</dt>
+		<dd>0.930937490376158</dd>
+	<dt>GO:0044260</dt>
+		<dd>0.0377294002744636</dd>
+	<dt>GO:0044265</dt>
+		<dd>0.939260742682098</dd>
+	<dt>GO:0044267</dt>
+		<dd>0.455425785660383</dd>
+	<dt>GO:0044271</dt>
+		<dd>0.412658987306264</dd>
+	<dt>GO:0044281</dt>
+		<dd>0.0329162856875434</dd>
+	<dt>GO:0044283</dt>
+		<dd>0.0544714887088108</dd>
+	<dt>GO:0044403</dt>
+		<dd>0.997906642659979</dd>
+	<dt>GO:0044419</dt>
+		<dd>0.997906642659979</dd>
+	<dt>GO:0044703</dt>
+		<dd>0.838383265040635</dd>
+	<dt>GO:0044706</dt>
+		<dd>0.717698467906219</dd>
+	<dt>GO:0044770</dt>
+		<dd>0.318729607779337</dd>
+	<dt>GO:0044772</dt>
+		<dd>0.645091143761198</dd>
+	<dt>GO:0044773</dt>
+		<dd>0.504687011056216</dd>
+	<dt>GO:0044774</dt>
+		<dd>0.504687011056216</dd>
+	<dt>GO:0044782</dt>
+		<dd>0.389252878638977</dd>
+	<dt>GO:0044783</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0044784</dt>
+		<dd>0.885055946113121</dd>
+	<dt>GO:0044819</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0044839</dt>
+		<dd>0.351817173479179</dd>
+	<dt>GO:0044843</dt>
+		<dd>0.974535471138907</dd>
+	<dt>GO:0045017</dt>
+		<dd>0.822244002164324</dd>
+	<dt>GO:0045055</dt>
+		<dd>0.302464598438534</dd>
+	<dt>GO:0045058</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0045087</dt>
+		<dd>0.556298309163917</dd>
+	<dt>GO:0045132</dt>
+		<dd>0.915452840641964</dd>
+	<dt>GO:0045184</dt>
+		<dd>0.979518444492177</dd>
+	<dt>GO:0045321</dt>
+		<dd>0.0938193898351178</dd>
+	<dt>GO:0045580</dt>
+		<dd>0.682102680813784</dd>
+	<dt>GO:0045582</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0045595</dt>
+		<dd>0.132983042017414</dd>
+	<dt>GO:0045596</dt>
+		<dd>0.95724742370311</dd>
+	<dt>GO:0045597</dt>
+		<dd>0.766458950937318</dd>
+	<dt>GO:0045619</dt>
+		<dd>0.682102680813784</dd>
+	<dt>GO:0045621</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0045664</dt>
+		<dd>0.256529187648146</dd>
+	<dt>GO:0045666</dt>
+		<dd>0.213709798511067</dd>
+	<dt>GO:0045727</dt>
+		<dd>0.213709798511067</dd>
+	<dt>GO:0045732</dt>
+		<dd>0.950595900178962</dd>
+	<dt>GO:0045785</dt>
+		<dd>0.0358190169418737</dd>
+	<dt>GO:0045786</dt>
+		<dd>0.929235116334439</dd>
+	<dt>GO:0045787</dt>
+		<dd>0.569414005853263</dd>
+	<dt>GO:0045834</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0045839</dt>
+		<dd>0.749984896107973</dd>
+	<dt>GO:0045840</dt>
+		<dd>0.915452840641964</dd>
+	<dt>GO:0045841</dt>
+		<dd>0.682102680813784</dd>
+	<dt>GO:0045859</dt>
+		<dd>0.431409703046146</dd>
+	<dt>GO:0045860</dt>
+		<dd>0.565876982109575</dd>
+	<dt>GO:0045862</dt>
+		<dd>0.934107604832319</dd>
+	<dt>GO:0045892</dt>
+		<dd>0.798759200566284</dd>
+	<dt>GO:0045893</dt>
+		<dd>0.342671892874503</dd>
+	<dt>GO:0045927</dt>
+		<dd>0.859928695231889</dd>
+	<dt>GO:0045930</dt>
+		<dd>0.620544847684885</dd>
+	<dt>GO:0045931</dt>
+		<dd>0.899574850525052</dd>
+	<dt>GO:0045934</dt>
+		<dd>0.915167030846114</dd>
+	<dt>GO:0045935</dt>
+		<dd>0.620622884620129</dd>
+	<dt>GO:0045936</dt>
+		<dd>0.43621782249192</dd>
+	<dt>GO:0045937</dt>
+		<dd>0.620622884620129</dd>
+	<dt>GO:0045944</dt>
+		<dd>0.500633703293527</dd>
+	<dt>GO:0046394</dt>
+		<dd>0.0686568062147378</dd>
+	<dt>GO:0046456</dt>
+		<dd>0.0674637050508519</dd>
+	<dt>GO:0046457</dt>
+		<dd>0.256529187648146</dd>
+	<dt>GO:0046467</dt>
+		<dd>0.828842778742689</dd>
+	<dt>GO:0046470</dt>
+		<dd>0.682102680813784</dd>
+	<dt>GO:0046474</dt>
+		<dd>0.822244002164324</dd>
+	<dt>GO:0046483</dt>
+		<dd>0.339482065458674</dd>
+	<dt>GO:0046486</dt>
+		<dd>0.842498103733373</dd>
+	<dt>GO:0046488</dt>
+		<dd>0.708588936783335</dd>
+	<dt>GO:0046649</dt>
+		<dd>0.0245257213913195</dd>
+	<dt>GO:0046651</dt>
+		<dd>0.0199843369053531</dd>
+	<dt>GO:0046834</dt>
+		<dd>0.64305604052381</dd>
+	<dt>GO:0046854</dt>
+		<dd>0.600467754856061</dd>
+	<dt>GO:0046903</dt>
+		<dd>0.199449166807538</dd>
+	<dt>GO:0046907</dt>
+		<dd>0.9933591621692</dd>
+	<dt>GO:0048144</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0048145</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0048146</dt>
+		<dd>0.859928695231889</dd>
+	<dt>GO:0048232</dt>
+		<dd>0.95724742370311</dd>
+	<dt>GO:0048285</dt>
+		<dd>0.998694448083751</dd>
+	<dt>GO:0048468</dt>
+		<dd>0.218625724683803</dd>
+	<dt>GO:0048511</dt>
+		<dd>0.859928695231889</dd>
+	<dt>GO:0048513</dt>
+		<dd>0.650970204231737</dd>
+	<dt>GO:0048514</dt>
+		<dd>0.949253039517512</dd>
+	<dt>GO:0048518</dt>
+		<dd>0.55587490977527</dd>
+	<dt>GO:0048519</dt>
+		<dd>0.55791263199954</dd>
+	<dt>GO:0048522</dt>
+		<dd>0.688983158505835</dd>
+	<dt>GO:0048523</dt>
+		<dd>0.608394471276053</dd>
+	<dt>GO:0048534</dt>
+		<dd>0.24655663763589</dd>
+	<dt>GO:0048583</dt>
+		<dd>0.319052197654587</dd>
+	<dt>GO:0048584</dt>
+		<dd>0.645091143761198</dd>
+	<dt>GO:0048585</dt>
+		<dd>0.0128910054269357</dd>
+	<dt>GO:0048589</dt>
+		<dd>0.556298309163917</dd>
+	<dt>GO:0048598</dt>
+		<dd>0.451782063320734</dd>
+	<dt>GO:0048608</dt>
+		<dd>0.939802188577454</dd>
+	<dt>GO:0048609</dt>
+		<dd>0.722890295029957</dd>
+	<dt>GO:0048638</dt>
+		<dd>0.300498090587562</dd>
+	<dt>GO:0048639</dt>
+		<dd>0.834461185274051</dd>
+	<dt>GO:0048646</dt>
+		<dd>0.942900284533211</dd>
+	<dt>GO:0048659</dt>
+		<dd>0.834461185274051</dd>
+	<dt>GO:0048660</dt>
+		<dd>0.834461185274051</dd>
+	<dt>GO:0048666</dt>
+		<dd>0.403461618220793</dd>
+	<dt>GO:0048699</dt>
+		<dd>0.745320768304297</dd>
+	<dt>GO:0048729</dt>
+		<dd>0.928636465491014</dd>
+	<dt>GO:0048731</dt>
+		<dd>0.565270803929782</dd>
+	<dt>GO:0048732</dt>
+		<dd>0.417246216654432</dd>
+	<dt>GO:0048762</dt>
+		<dd>0.600467754856061</dd>
+	<dt>GO:0048856</dt>
+		<dd>0.555835357659234</dd>
+	<dt>GO:0048863</dt>
+		<dd>0.109966177850091</dd>
+	<dt>GO:0048869</dt>
+		<dd>0.0327243014389909</dd>
+	<dt>GO:0048870</dt>
+		<dd>0.107606710646298</dd>
+	<dt>GO:0048872</dt>
+		<dd>0.451782063320734</dd>
+	<dt>GO:0048878</dt>
+		<dd>0.109999569744816</dd>
+	<dt>GO:0050670</dt>
+		<dd>0.0199843369053531</dd>
+	<dt>GO:0050671</dt>
+		<dd>0.00781099312492499</dd>
+	<dt>GO:0050673</dt>
+		<dd>0.256529187648146</dd>
+	<dt>GO:0050708</dt>
+		<dd>0.600467754856061</dd>
+	<dt>GO:0050714</dt>
+		<dd>0.834461185274051</dd>
+	<dt>GO:0050727</dt>
+		<dd>0.453956959422405</dd>
+	<dt>GO:0050728</dt>
+		<dd>0.451782063320734</dd>
+	<dt>GO:0050729</dt>
+		<dd>0.600467754856061</dd>
+	<dt>GO:0050730</dt>
+		<dd>0.924081797108909</dd>
+	<dt>GO:0050731</dt>
+		<dd>0.868485663700939</dd>
+	<dt>GO:0050767</dt>
+		<dd>0.629594191735141</dd>
+	<dt>GO:0050769</dt>
+		<dd>0.344938040849562</dd>
+	<dt>GO:0050776</dt>
+		<dd>0.00639818666490968</dd>
+	<dt>GO:0050777</dt>
+		<dd>0.0547021269481351</dd>
+	<dt>GO:0050778</dt>
+		<dd>0.0157434721673769</dd>
+	<dt>GO:0050789</dt>
+		<dd>0.111579995095962</dd>
+	<dt>GO:0050790</dt>
+		<dd>0.827084656016108</dd>
+	<dt>GO:0050793</dt>
+		<dd>0.054685109867731</dd>
+	<dt>GO:0050794</dt>
+		<dd>0.127252919383928</dd>
+	<dt>GO:0050801</dt>
+		<dd>0.109966177850091</dd>
+	<dt>GO:0050863</dt>
+		<dd>0.0373936168636955</dd>
+	<dt>GO:0050864</dt>
+		<dd>0.0264935478921129</dd>
+	<dt>GO:0050865</dt>
+		<dd>0.0297853297011005</dd>
+	<dt>GO:0050866</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0050867</dt>
+		<dd>0.0199843369053531</dd>
+	<dt>GO:0050870</dt>
+		<dd>0.0306917790272618</dd>
+	<dt>GO:0050871</dt>
+		<dd>0.0264935478921129</dd>
+	<dt>GO:0050878</dt>
+		<dd>0.213709798511067</dd>
+	<dt>GO:0050896</dt>
+		<dd>0.127970481586393</dd>
+	<dt>GO:0050900</dt>
+		<dd>0.663122819379463</dd>
+	<dt>GO:0050920</dt>
+		<dd>0.881550440263209</dd>
+	<dt>GO:0051046</dt>
+		<dd>0.694497698373022</dd>
+	<dt>GO:0051047</dt>
+		<dd>0.805354124176759</dd>
+	<dt>GO:0051049</dt>
+		<dd>0.893614505154482</dd>
+	<dt>GO:0051050</dt>
+		<dd>0.972714012235269</dd>
+	<dt>GO:0051051</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0051052</dt>
+		<dd>0.930937490376158</dd>
+	<dt>GO:0051053</dt>
+		<dd>0.949253039517512</dd>
+	<dt>GO:0051054</dt>
+		<dd>0.849816314217168</dd>
+	<dt>GO:0051093</dt>
+		<dd>0.750790873383401</dd>
+	<dt>GO:0051094</dt>
+		<dd>0.573016820566937</dd>
+	<dt>GO:0051098</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0051128</dt>
+		<dd>0.984493617578827</dd>
+	<dt>GO:0051129</dt>
+		<dd>0.838383265040635</dd>
+	<dt>GO:0051130</dt>
+		<dd>0.8609802320112</dd>
+	<dt>GO:0051171</dt>
+		<dd>0.202225610184124</dd>
+	<dt>GO:0051172</dt>
+		<dd>0.857476518354972</dd>
+	<dt>GO:0051173</dt>
+		<dd>0.432301246860494</dd>
+	<dt>GO:0051174</dt>
+		<dd>0.523998372190156</dd>
+	<dt>GO:0051179</dt>
+		<dd>0.784123062449586</dd>
+	<dt>GO:0051222</dt>
+		<dd>0.978602722276443</dd>
+	<dt>GO:0051223</dt>
+		<dd>0.912674227423619</dd>
+	<dt>GO:0051225</dt>
+		<dd>0.924081797108909</dd>
+	<dt>GO:0051234</dt>
+		<dd>0.743909684826575</dd>
+	<dt>GO:0051235</dt>
+		<dd>0.0707869257116544</dd>
+	<dt>GO:0051239</dt>
+		<dd>0.0958507042436515</dd>
+	<dt>GO:0051240</dt>
+		<dd>0.316094190744228</dd>
+	<dt>GO:0051241</dt>
+		<dd>0.525135288963703</dd>
+	<dt>GO:0051246</dt>
+		<dd>0.381137086320367</dd>
+	<dt>GO:0051247</dt>
+		<dd>0.430910241672012</dd>
+	<dt>GO:0051248</dt>
+		<dd>0.382146446555791</dd>
+	<dt>GO:0051249</dt>
+		<dd>0.0199843369053531</dd>
+	<dt>GO:0051251</dt>
+		<dd>0.0161025796937978</dd>
+	<dt>GO:0051252</dt>
+		<dd>0.150696007451256</dd>
+	<dt>GO:0051253</dt>
+		<dd>0.819802768720721</dd>
+	<dt>GO:0051254</dt>
+		<dd>0.394136311675125</dd>
+	<dt>GO:0051258</dt>
+		<dd>0.300498090587562</dd>
+	<dt>GO:0051259</dt>
+		<dd>0.256529187648146</dd>
+	<dt>GO:0051270</dt>
+		<dd>0.0634752531988871</dd>
+	<dt>GO:0051271</dt>
+		<dd>0.451782063320734</dd>
+	<dt>GO:0051272</dt>
+		<dd>0.193879359048385</dd>
+	<dt>GO:0051276</dt>
+		<dd>0.995603344797409</dd>
+	<dt>GO:0051301</dt>
+		<dd>0.973832827569805</dd>
+	<dt>GO:0051302</dt>
+		<dd>0.593956233083384</dd>
+	<dt>GO:0051304</dt>
+		<dd>0.934107604832319</dd>
+	<dt>GO:0051306</dt>
+		<dd>0.899723559100401</dd>
+	<dt>GO:0051321</dt>
+		<dd>0.893614505154482</dd>
+	<dt>GO:0051336</dt>
+		<dd>0.987355783629986</dd>
+	<dt>GO:0051338</dt>
+		<dd>0.686726561230262</dd>
+	<dt>GO:0051346</dt>
+		<dd>0.964005562911553</dd>
+	<dt>GO:0051347</dt>
+		<dd>0.781435078689617</dd>
+	<dt>GO:0051348</dt>
+		<dd>0.124205773188318</dd>
+	<dt>GO:0051436</dt>
+		<dd>0.663122819379463</dd>
+	<dt>GO:0051437</dt>
+		<dd>0.849816314217168</dd>
+	<dt>GO:0051438</dt>
+		<dd>0.723712203253037</dd>
+	<dt>GO:0051439</dt>
+		<dd>0.694497698373022</dd>
+	<dt>GO:0051443</dt>
+		<dd>0.868485663700939</dd>
+	<dt>GO:0051444</dt>
+		<dd>0.663122819379463</dd>
+	<dt>GO:0051493</dt>
+		<dd>0.565876982109575</dd>
+	<dt>GO:0051494</dt>
+		<dd>0.504687011056216</dd>
+	<dt>GO:0051495</dt>
+		<dd>0.0410026067414107</dd>
+	<dt>GO:0051603</dt>
+		<dd>0.921613365979558</dd>
+	<dt>GO:0051640</dt>
+		<dd>0.991497294668674</dd>
+	<dt>GO:0051641</dt>
+		<dd>0.87939148621575</dd>
+	<dt>GO:0051649</dt>
+		<dd>0.974489193709824</dd>
+	<dt>GO:0051656</dt>
+		<dd>0.998796543494297</dd>
+	<dt>GO:0051674</dt>
+		<dd>0.107606710646298</dd>
+	<dt>GO:0051704</dt>
+		<dd>0.571376827856318</dd>
+	<dt>GO:0051707</dt>
+		<dd>0.0674637050508519</dd>
+	<dt>GO:0051716</dt>
+		<dd>0.0390041706752058</dd>
+	<dt>GO:0051726</dt>
+		<dd>0.842354646890328</dd>
+	<dt>GO:0051781</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0051783</dt>
+		<dd>0.983701259115401</dd>
+	<dt>GO:0051784</dt>
+		<dd>0.749984896107973</dd>
+	<dt>GO:0051785</dt>
+		<dd>0.915452840641964</dd>
+	<dt>GO:0051896</dt>
+		<dd>0.881550440263209</dd>
+	<dt>GO:0051897</dt>
+		<dd>0.881550440263209</dd>
+	<dt>GO:0051960</dt>
+		<dd>0.663122819379463</dd>
+	<dt>GO:0051962</dt>
+		<dd>0.432932171166745</dd>
+	<dt>GO:0051983</dt>
+		<dd>0.957318315828841</dd>
+	<dt>GO:0051985</dt>
+		<dd>0.749984896107973</dd>
+	<dt>GO:0055065</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0055074</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0055080</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0055082</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0055085</dt>
+		<dd>0.0454178345676092</dd>
+	<dt>GO:0055114</dt>
+		<dd>0.0248937160027953</dd>
+	<dt>GO:0060249</dt>
+		<dd>0.749984896107973</dd>
+	<dt>GO:0060255</dt>
+		<dd>0.202225610184124</dd>
+	<dt>GO:0060271</dt>
+		<dd>0.389252878638977</dd>
+	<dt>GO:0060284</dt>
+		<dd>0.591976916270953</dd>
+	<dt>GO:0060322</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0060326</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0060341</dt>
+		<dd>0.998796543494297</dd>
+	<dt>GO:0060348</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0060429</dt>
+		<dd>0.963179732429966</dd>
+	<dt>GO:0060485</dt>
+		<dd>0.600467754856061</dd>
+	<dt>GO:0060548</dt>
+		<dd>0.800038037101466</dd>
+	<dt>GO:0060627</dt>
+		<dd>0.77913772259646</dd>
+	<dt>GO:0060759</dt>
+		<dd>0.137551606293564</dd>
+	<dt>GO:0061458</dt>
+		<dd>0.939802188577454</dd>
+	<dt>GO:0061564</dt>
+		<dd>0.834461185274051</dd>
+	<dt>GO:0065003</dt>
+		<dd>0.441307072896425</dd>
+	<dt>GO:0065004</dt>
+		<dd>0.859928695231889</dd>
+	<dt>GO:0065007</dt>
+		<dd>0.126928904683919</dd>
+	<dt>GO:0065008</dt>
+		<dd>0.207253891673561</dd>
+	<dt>GO:0065009</dt>
+		<dd>0.957022698291198</dd>
+	<dt>GO:0070192</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0070201</dt>
+		<dd>0.968281335767983</dd>
+	<dt>GO:0070271</dt>
+		<dd>0.643725650873578</dd>
+	<dt>GO:0070371</dt>
+		<dd>0.949253039517512</dd>
+	<dt>GO:0070372</dt>
+		<dd>0.939802188577454</dd>
+	<dt>GO:0070374</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0070507</dt>
+		<dd>0.924081797108909</dd>
+	<dt>GO:0070647</dt>
+		<dd>0.947239609180242</dd>
+	<dt>GO:0070661</dt>
+		<dd>0.0199843369053531</dd>
+	<dt>GO:0070663</dt>
+		<dd>0.0199843369053531</dd>
+	<dt>GO:0070665</dt>
+		<dd>0.00781099312492499</dd>
+	<dt>GO:0070727</dt>
+		<dd>0.968089075299365</dd>
+	<dt>GO:0070848</dt>
+		<dd>0.828842778742689</dd>
+	<dt>GO:0070887</dt>
+		<dd>0.410117490427625</dd>
+	<dt>GO:0070925</dt>
+		<dd>0.940428478793319</dd>
+	<dt>GO:0071103</dt>
+		<dd>0.868485663700939</dd>
+	<dt>GO:0071156</dt>
+		<dd>0.64305604052381</dd>
+	<dt>GO:0071158</dt>
+		<dd>0.881550440263209</dd>
+	<dt>GO:0071173</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0071174</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0071216</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0071219</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0071222</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0071241</dt>
+		<dd>0.717698467906219</dd>
+	<dt>GO:0071310</dt>
+		<dd>0.22438375238017</dd>
+	<dt>GO:0071345</dt>
+		<dd>0.0537378702469952</dd>
+	<dt>GO:0071363</dt>
+		<dd>0.828842778742689</dd>
+	<dt>GO:0071375</dt>
+		<dd>0.344938040849562</dd>
+	<dt>GO:0071396</dt>
+		<dd>0.969715025346272</dd>
+	<dt>GO:0071407</dt>
+		<dd>0.964005562911553</dd>
+	<dt>GO:0071417</dt>
+		<dd>0.342903406953601</dd>
+	<dt>GO:0071495</dt>
+		<dd>0.699172007515229</dd>
+	<dt>GO:0071496</dt>
+		<dd>0.0296439009117456</dd>
+	<dt>GO:0071702</dt>
+		<dd>0.932856998950748</dd>
+	<dt>GO:0071704</dt>
+		<dd>0.1390197679888</dd>
+	<dt>GO:0071705</dt>
+		<dd>0.968840256715315</dd>
+	<dt>GO:0071822</dt>
+		<dd>0.643464677999455</dd>
+	<dt>GO:0071824</dt>
+		<dd>0.881550440263209</dd>
+	<dt>GO:0071840</dt>
+		<dd>0.983802413503925</dd>
+	<dt>GO:0071897</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:0071900</dt>
+		<dd>0.946673707320878</dd>
+	<dt>GO:0071902</dt>
+		<dd>0.950595900178962</dd>
+	<dt>GO:0072330</dt>
+		<dd>0.00239705390185652</dd>
+	<dt>GO:0072331</dt>
+		<dd>0.475550256393061</dd>
+	<dt>GO:0072358</dt>
+		<dd>0.969715025346272</dd>
+	<dt>GO:0072359</dt>
+		<dd>0.992573651237092</dd>
+	<dt>GO:0072395</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0072401</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0072413</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0072422</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0072431</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:0072503</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0072507</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0080090</dt>
+		<dd>0.215876937550414</dd>
+	<dt>GO:0080134</dt>
+		<dd>0.472076887450917</dd>
+	<dt>GO:0080135</dt>
+		<dd>0.750790873383401</dd>
+	<dt>GO:0090066</dt>
+		<dd>0.682102680813784</dd>
+	<dt>GO:0090068</dt>
+		<dd>0.8676202535382</dd>
+	<dt>GO:0090087</dt>
+		<dd>0.924081797108909</dd>
+	<dt>GO:0090130</dt>
+		<dd>0.137551606293564</dd>
+	<dt>GO:0090132</dt>
+		<dd>0.137551606293564</dd>
+	<dt>GO:0090304</dt>
+		<dd>0.287382764795126</dd>
+	<dt>GO:0090307</dt>
+		<dd>0.95724742370311</dd>
+	<dt>GO:0090329</dt>
+		<dd>0.64305604052381</dd>
+	<dt>GO:0090407</dt>
+		<dd>0.441307072896425</dd>
+	<dt>GO:0097164</dt>
+		<dd>0.77913772259646</dd>
+	<dt>GO:0097190</dt>
+		<dd>0.193879359048385</dd>
+	<dt>GO:0097193</dt>
+		<dd>0.300498090587562</dd>
+	<dt>GO:0097305</dt>
+		<dd>0.64305604052381</dd>
+	<dt>GO:0097435</dt>
+		<dd>0.0881306195765999</dd>
+	<dt>GO:0097529</dt>
+		<dd>0.504687011056216</dd>
+	<dt>GO:0097659</dt>
+		<dd>0.222952134498742</dd>
+	<dt>GO:0097696</dt>
+		<dd>0.213709798511067</dd>
+	<dt>GO:0097711</dt>
+		<dd>0.344938040849562</dd>
+	<dt>GO:0098542</dt>
+		<dd>0.305903484392941</dd>
+	<dt>GO:0098609</dt>
+		<dd>0.0236038467863858</dd>
+	<dt>GO:0098657</dt>
+		<dd>0.269490117357974</dd>
+	<dt>GO:0098771</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:0098813</dt>
+		<dd>0.999332326133543</dd>
+	<dt>GO:0110053</dt>
+		<dd>0.063674673292475</dd>
+	<dt>GO:0120031</dt>
+		<dd>0.0721660425614635</dd>
+	<dt>GO:0120035</dt>
+		<dd>0.300498090587562</dd>
+	<dt>GO:0120036</dt>
+		<dd>0.181213221500629</dd>
+	<dt>GO:0140013</dt>
+		<dd>0.750790873383401</dd>
+	<dt>GO:0140014</dt>
+		<dd>0.997808124912556</dd>
+	<dt>GO:0140056</dt>
+		<dd>0.344938040849562</dd>
+	<dt>GO:1900180</dt>
+		<dd>0.915452840641964</dd>
+	<dt>GO:1900182</dt>
+		<dd>0.899896163320085</dd>
+	<dt>GO:1901135</dt>
+		<dd>0.942900284533211</dd>
+	<dt>GO:1901137</dt>
+		<dd>0.805354124176759</dd>
+	<dt>GO:1901360</dt>
+		<dd>0.168053560297382</dd>
+	<dt>GO:1901362</dt>
+		<dd>0.299609861743851</dd>
+	<dt>GO:1901564</dt>
+		<dd>0.689146457791027</dd>
+	<dt>GO:1901565</dt>
+		<dd>0.988536526124971</dd>
+	<dt>GO:1901566</dt>
+		<dd>0.38217805402222</dd>
+	<dt>GO:1901568</dt>
+		<dd>0.0634752531988871</dd>
+	<dt>GO:1901570</dt>
+		<dd>0.0674637050508519</dd>
+	<dt>GO:1901575</dt>
+		<dd>0.960611719249339</dd>
+	<dt>GO:1901576</dt>
+		<dd>0.160426180358627</dd>
+	<dt>GO:1901615</dt>
+		<dd>0.300498090587562</dd>
+	<dt>GO:1901652</dt>
+		<dd>0.556298309163917</dd>
+	<dt>GO:1901653</dt>
+		<dd>0.432932171166745</dd>
+	<dt>GO:1901698</dt>
+		<dd>0.674183772958813</dd>
+	<dt>GO:1901699</dt>
+		<dd>0.273760935469853</dd>
+	<dt>GO:1901700</dt>
+		<dd>0.619694823994405</dd>
+	<dt>GO:1901701</dt>
+		<dd>0.450581114870056</dd>
+	<dt>GO:1901796</dt>
+		<dd>0.213709798511067</dd>
+	<dt>GO:1901987</dt>
+		<dd>0.34763110205355</dd>
+	<dt>GO:1901988</dt>
+		<dd>0.525135288963703</dd>
+	<dt>GO:1901989</dt>
+		<dd>0.915452840641964</dd>
+	<dt>GO:1901990</dt>
+		<dd>0.431409703046146</dd>
+	<dt>GO:1901991</dt>
+		<dd>0.525135288963703</dd>
+	<dt>GO:1902099</dt>
+		<dd>0.868485663700939</dd>
+	<dt>GO:1902100</dt>
+		<dd>0.682102680813784</dd>
+	<dt>GO:1902105</dt>
+		<dd>0.749984896107973</dd>
+	<dt>GO:1902107</dt>
+		<dd>0.928636465491014</dd>
+	<dt>GO:1902400</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:1902402</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:1902403</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:1902531</dt>
+		<dd>0.576672350898798</dd>
+	<dt>GO:1902533</dt>
+		<dd>0.776495969381006</dd>
+	<dt>GO:1902679</dt>
+		<dd>0.798759200566284</dd>
+	<dt>GO:1902680</dt>
+		<dd>0.342671892874503</dd>
+	<dt>GO:1902749</dt>
+		<dd>0.116946769243465</dd>
+	<dt>GO:1902806</dt>
+		<dd>0.859928695231889</dd>
+	<dt>GO:1902807</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:1902850</dt>
+		<dd>0.998551592170127</dd>
+	<dt>GO:1902903</dt>
+		<dd>0.0707869257116544</dd>
+	<dt>GO:1902905</dt>
+		<dd>0.0296439009117456</dd>
+	<dt>GO:1903037</dt>
+		<dd>0.0634752531988871</dd>
+	<dt>GO:1903039</dt>
+		<dd>0.0537378702469952</dd>
+	<dt>GO:1903046</dt>
+		<dd>0.798759200566284</dd>
+	<dt>GO:1903047</dt>
+		<dd>0.99390497496011</dd>
+	<dt>GO:1903050</dt>
+		<dd>0.899723559100401</dd>
+	<dt>GO:1903052</dt>
+		<dd>0.899723559100401</dd>
+	<dt>GO:1903320</dt>
+		<dd>0.819802768720721</dd>
+	<dt>GO:1903321</dt>
+		<dd>0.663122819379463</dd>
+	<dt>GO:1903322</dt>
+		<dd>0.924081797108909</dd>
+	<dt>GO:1903362</dt>
+		<dd>0.912674227423619</dd>
+	<dt>GO:1903364</dt>
+		<dd>0.912674227423619</dd>
+	<dt>GO:1903506</dt>
+		<dd>0.126294346353587</dd>
+	<dt>GO:1903507</dt>
+		<dd>0.798759200566284</dd>
+	<dt>GO:1903508</dt>
+		<dd>0.342671892874503</dd>
+	<dt>GO:1903509</dt>
+		<dd>0.64305604052381</dd>
+	<dt>GO:1903530</dt>
+		<dd>0.593956233083384</dd>
+	<dt>GO:1903532</dt>
+		<dd>0.77913772259646</dd>
+	<dt>GO:1903706</dt>
+		<dd>0.749984896107973</dd>
+	<dt>GO:1903708</dt>
+		<dd>0.928636465491014</dd>
+	<dt>GO:1903827</dt>
+		<dd>0.992573651237092</dd>
+	<dt>GO:1903829</dt>
+		<dd>0.969715025346272</dd>
+	<dt>GO:1904029</dt>
+		<dd>0.64305604052381</dd>
+	<dt>GO:1904666</dt>
+		<dd>0.694497698373022</dd>
+	<dt>GO:1904667</dt>
+		<dd>0.663122819379463</dd>
+	<dt>GO:1904668</dt>
+		<dd>0.849816314217168</dd>
+	<dt>GO:1904950</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:1904951</dt>
+		<dd>0.978602722276443</dd>
+	<dt>GO:1905818</dt>
+		<dd>0.912674227423619</dd>
+	<dt>GO:1905819</dt>
+		<dd>0.717698467906219</dd>
+	<dt>GO:2000026</dt>
+		<dd>0.497824201964316</dd>
+	<dt>GO:2000045</dt>
+		<dd>0.859928695231889</dd>
+	<dt>GO:2000058</dt>
+		<dd>0.868485663700939</dd>
+	<dt>GO:2000060</dt>
+		<dd>0.868485663700939</dd>
+	<dt>GO:2000104</dt>
+		<dd>0.859928695231889</dd>
+	<dt>GO:2000112</dt>
+		<dd>0.299609861743851</dd>
+	<dt>GO:2000113</dt>
+		<dd>0.932856998950748</dd>
+	<dt>GO:2000134</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:2000145</dt>
+		<dd>0.0537378702469952</dd>
+	<dt>GO:2000146</dt>
+		<dd>0.451782063320734</dd>
+	<dt>GO:2000147</dt>
+		<dd>0.169582829314288</dd>
+	<dt>GO:2000241</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:2000816</dt>
+		<dd>0.717698467906219</dd>
+	<dt>GO:2001141</dt>
+		<dd>0.126294346353587</dd>
+	<dt>GO:2001233</dt>
+		<dd>0.432932171166745</dd>
+	<dt>GO:2001234</dt>
+		<dd>0.804481714890612</dd>
+	<dt>GO:2001242</dt>
+		<dd>0.172791127996906</dd>
+	<dt>GO:2001251</dt>
+		<dd>0.899723559100401</dd>
+	<dt>GO:2001252</dt>
+		<dd>0.964005562911553</dd>
+	<dt>GO:0000187</dt>
+		<dd>1</dd>
+	<dt>GO:0001525</dt>
+		<dd>1</dd>
+	<dt>GO:0001558</dt>
+		<dd>1</dd>
+	<dt>GO:0001654</dt>
+		<dd>1</dd>
+	<dt>GO:0001666</dt>
+		<dd>1</dd>
+	<dt>GO:0002573</dt>
+		<dd>1</dd>
+	<dt>GO:0002687</dt>
+		<dd>1</dd>
+	<dt>GO:0003013</dt>
+		<dd>1</dd>
+	<dt>GO:0006278</dt>
+		<dd>1</dd>
+	<dt>GO:0006323</dt>
+		<dd>1</dd>
+	<dt>GO:0006397</dt>
+		<dd>1</dd>
+	<dt>GO:0006403</dt>
+		<dd>1</dd>
+	<dt>GO:0006606</dt>
+		<dd>1</dd>
+	<dt>GO:0006691</dt>
+		<dd>1</dd>
+	<dt>GO:0006753</dt>
+		<dd>1</dd>
+	<dt>GO:0006913</dt>
+		<dd>1</dd>
+	<dt>GO:0006998</dt>
+		<dd>1</dd>
+	<dt>GO:0007004</dt>
+		<dd>1</dd>
+	<dt>GO:0007018</dt>
+		<dd>1</dd>
+	<dt>GO:0007080</dt>
+		<dd>1</dd>
+	<dt>GO:0007173</dt>
+		<dd>1</dd>
+	<dt>GO:0007249</dt>
+		<dd>1</dd>
+	<dt>GO:0007409</dt>
+		<dd>1</dd>
+	<dt>GO:0007423</dt>
+		<dd>1</dd>
+	<dt>GO:0007507</dt>
+		<dd>1</dd>
+	<dt>GO:0007517</dt>
+		<dd>1</dd>
+	<dt>GO:0008015</dt>
+		<dd>1</dd>
+	<dt>GO:0008544</dt>
+		<dd>1</dd>
+	<dt>GO:0008608</dt>
+		<dd>1</dd>
+	<dt>GO:0009117</dt>
+		<dd>1</dd>
+	<dt>GO:0009636</dt>
+		<dd>1</dd>
+	<dt>GO:0009887</dt>
+		<dd>1</dd>
+	<dt>GO:0009895</dt>
+		<dd>1</dd>
+	<dt>GO:0010038</dt>
+		<dd>1</dd>
+	<dt>GO:0010833</dt>
+		<dd>1</dd>
+	<dt>GO:0014706</dt>
+		<dd>1</dd>
+	<dt>GO:0016049</dt>
+		<dd>1</dd>
+	<dt>GO:0016071</dt>
+		<dd>1</dd>
+	<dt>GO:0016202</dt>
+		<dd>1</dd>
+	<dt>GO:0016579</dt>
+		<dd>1</dd>
+	<dt>GO:0017038</dt>
+		<dd>1</dd>
+	<dt>GO:0018107</dt>
+		<dd>1</dd>
+	<dt>GO:0018205</dt>
+		<dd>1</dd>
+	<dt>GO:0018210</dt>
+		<dd>1</dd>
+	<dt>GO:0019370</dt>
+		<dd>1</dd>
+	<dt>GO:0030261</dt>
+		<dd>1</dd>
+	<dt>GO:0030397</dt>
+		<dd>1</dd>
+	<dt>GO:0030522</dt>
+		<dd>1</dd>
+	<dt>GO:0031098</dt>
+		<dd>1</dd>
+	<dt>GO:0032147</dt>
+		<dd>1</dd>
+	<dt>GO:0032386</dt>
+		<dd>1</dd>
+	<dt>GO:0032388</dt>
+		<dd>1</dd>
+	<dt>GO:0032872</dt>
+		<dd>1</dd>
+	<dt>GO:0032990</dt>
+		<dd>1</dd>
+	<dt>GO:0033157</dt>
+		<dd>1</dd>
+	<dt>GO:0035051</dt>
+		<dd>1</dd>
+	<dt>GO:0035295</dt>
+		<dd>1</dd>
+	<dt>GO:0036293</dt>
+		<dd>1</dd>
+	<dt>GO:0038127</dt>
+		<dd>1</dd>
+	<dt>GO:0042063</dt>
+		<dd>1</dd>
+	<dt>GO:0042306</dt>
+		<dd>1</dd>
+	<dt>GO:0042307</dt>
+		<dd>1</dd>
+	<dt>GO:0042692</dt>
+		<dd>1</dd>
+	<dt>GO:0043010</dt>
+		<dd>1</dd>
+	<dt>GO:0043112</dt>
+		<dd>1</dd>
+	<dt>GO:0043122</dt>
+		<dd>1</dd>
+	<dt>GO:0043123</dt>
+		<dd>1</dd>
+	<dt>GO:0044786</dt>
+		<dd>1</dd>
+	<dt>GO:0045143</dt>
+		<dd>1</dd>
+	<dt>GO:0046822</dt>
+		<dd>1</dd>
+	<dt>GO:0046824</dt>
+		<dd>1</dd>
+	<dt>GO:0048545</dt>
+		<dd>1</dd>
+	<dt>GO:0048634</dt>
+		<dd>1</dd>
+	<dt>GO:0048667</dt>
+		<dd>1</dd>
+	<dt>GO:0048738</dt>
+		<dd>1</dd>
+	<dt>GO:0048812</dt>
+		<dd>1</dd>
+	<dt>GO:0048858</dt>
+		<dd>1</dd>
+	<dt>GO:0048871</dt>
+		<dd>1</dd>
+	<dt>GO:0050000</dt>
+		<dd>1</dd>
+	<dt>GO:0050921</dt>
+		<dd>1</dd>
+	<dt>GO:0051081</dt>
+		<dd>1</dd>
+	<dt>GO:0051090</dt>
+		<dd>1</dd>
+	<dt>GO:0051091</dt>
+		<dd>1</dd>
+	<dt>GO:0051146</dt>
+		<dd>1</dd>
+	<dt>GO:0051147</dt>
+		<dd>1</dd>
+	<dt>GO:0051169</dt>
+		<dd>1</dd>
+	<dt>GO:0051170</dt>
+		<dd>1</dd>
+	<dt>GO:0051303</dt>
+		<dd>1</dd>
+	<dt>GO:0051310</dt>
+		<dd>1</dd>
+	<dt>GO:0051403</dt>
+		<dd>1</dd>
+	<dt>GO:0051972</dt>
+		<dd>1</dd>
+	<dt>GO:0052547</dt>
+		<dd>1</dd>
+	<dt>GO:0052548</dt>
+		<dd>1</dd>
+	<dt>GO:0055007</dt>
+		<dd>1</dd>
+	<dt>GO:0055086</dt>
+		<dd>1</dd>
+	<dt>GO:0060537</dt>
+		<dd>1</dd>
+	<dt>GO:0061024</dt>
+		<dd>1</dd>
+	<dt>GO:0061061</dt>
+		<dd>1</dd>
+	<dt>GO:0070302</dt>
+		<dd>1</dd>
+	<dt>GO:0070482</dt>
+		<dd>1</dd>
+	<dt>GO:0070646</dt>
+		<dd>1</dd>
+	<dt>GO:0072593</dt>
+		<dd>1</dd>
+	<dt>GO:0072594</dt>
+		<dd>1</dd>
+	<dt>GO:0090224</dt>
+		<dd>1</dd>
+	<dt>GO:0090316</dt>
+		<dd>1</dd>
+	<dt>GO:0097191</dt>
+		<dd>1</dd>
+	<dt>GO:0120039</dt>
+		<dd>1</dd>
+	<dt>GO:1901861</dt>
+		<dd>1</dd>
+	<dt>GO:1901992</dt>
+		<dd>1</dd>
+	<dt>GO:1902115</dt>
+		<dd>1</dd>
+	<dt>GO:1903828</dt>
+		<dd>1</dd>
+	<dt>GO:1904589</dt>
+		<dd>1</dd>
+	<dt>GO:1904591</dt>
+		<dd>1</dd>
+	<dt>GO:2000278</dt>
+		<dd>1</dd>
+	<dt>GO:2000377</dt>
+		<dd>1</dd>
+</dl>
+
+
+
+
+<dl class=dl-horizontal>
+	<dt>Annotated</dt>
+		<dd>310</dd>
+	<dt>Significant</dt>
+		<dd>46</dd>
+	<dt>NodeSize</dt>
+		<dd>10</dd>
+	<dt>SigTerms</dt>
+		<dd>955</dd>
+</dl>
+
+
+
+    
+    			 -- Classic Algorithm -- 
+    
+    		 the algorithm is scoring 1070 nontrivial nodes
+    		 parameters: 
+    			 test statistic: ks
+    			 score order: increasing
+    
+
+
+<table>
+<thead><tr><th scope=col>GO.ID</th><th scope=col>Term</th><th scope=col>Annotated</th><th scope=col>Significant</th><th scope=col>Expected</th><th scope=col>classicFisher</th></tr></thead>
+<tbody>
+	<tr><td>GO:0002253                                 </td><td>activation of immune response              </td><td>10                                         </td><td> 7                                         </td><td>1.48                                       </td><td>8.8e-05                                    </td></tr>
+	<tr><td>GO:0002764                                 </td><td>immune response-regulating signaling pat...</td><td>12                                         </td><td> 7                                         </td><td>1.78                                       </td><td>0.00046                                    </td></tr>
+	<tr><td>GO:0002768                                 </td><td>immune response-regulating cell surface ...</td><td>12                                         </td><td> 7                                         </td><td>1.78                                       </td><td>0.00046                                    </td></tr>
+	<tr><td>GO:0043651                                 </td><td>linoleic acid metabolic process            </td><td>10                                         </td><td> 6                                         </td><td>1.48                                       </td><td>0.00104                                    </td></tr>
+	<tr><td>GO:0006631                                 </td><td>fatty acid metabolic process               </td><td>43                                         </td><td>14                                         </td><td>6.38                                       </td><td>0.00118                                    </td></tr>
+	<tr><td>GO:0032787                                 </td><td>monocarboxylic acid metabolic process      </td><td>43                                         </td><td>14                                         </td><td>6.38                                       </td><td>0.00118                                    </td></tr>
+</tbody>
+</table>
+
+
+
+
+```R
+showSigOfNodes(myGOData, score(Myenrichment_Fisher), firstSigNodes=5, useInfo="all") # Plot the enrichment GO graph
+```
+
+
+    $dag
+    A graphNEL graph with directed edges
+    Number of Nodes = 38 
+    Number of Edges = 67 
+    
+    $complete.dag
+    [1] "A graph with 38 nodes."
+    
+
+
+
+[output](https://github.com/Chengshu21/Chapter-2-bioconductor-in-R/blob/master/output-GO%20Annotation%20and%20Enrichment.png)
+
+
+
+```R
+
+```

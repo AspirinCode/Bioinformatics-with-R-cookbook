@@ -1,0 +1,391 @@
+
+
+```R
+source("http://bioconductor.org/biocLite.R") # Required only if not installed already
+biocLite("org.Hs.eg.db") # Required only if not installed already
+```
+
+
+```R
+library(org.Hs.eg.db)
+myEIDs <- c("1", "10", "100", "1000", "37690", "1109", "6718") # Create vecotor of input Entrez IDs
+mySymbols <- mget(myEIDs, org.Hs.egSYMBOL, ifnotfound=NA) # gets gene symbols 
+mySymbols <-unlist(mySymbols)
+mySymbols <- mget(myEIDs, org.Hs.egSYMBOL, ifnotfound=NA) # gets gene symbols 
+mySymbols <-unlist(mySymbols)[!is.na(unlist(mySymbols))] # Removes the symbol with value NA
+myEIDs <- unlist(mget(mySymbols, org.Hs.egSYMBOL2EG)) # gets Entrez IDs for input gene symbols
+myEIDs
+```
+
+
+<dl class=dl-horizontal>
+	<dt>A1BG</dt>
+		<dd>'1'</dd>
+	<dt>NAT2</dt>
+		<dd>'10'</dd>
+	<dt>ADA</dt>
+		<dd>'100'</dd>
+	<dt>CDH2</dt>
+		<dd>'1000'</dd>
+	<dt>AKR1C4</dt>
+		<dd>'1109'</dd>
+	<dt>AKR1D1</dt>
+		<dd>'6718'</dd>
+</dl>
+
+
+
+
+```R
+myGOIDs <- mget(c("1109", "6718"), org.Hs.egGO, ifnotfound=NA)
+myGOIDs 
+```
+
+
+<dl>
+	<dt>$`1109`</dt>
+		<dd><dl>
+	<dt>$`GO:0001523`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0001523'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0006699`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0006699'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0008202`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0008202'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0008209`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0008209'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0015721`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0015721'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0022900`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0022900'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0044597`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0044597'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IMP'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0044598`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0044598'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IMP'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0071395`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0071395'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0005737`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0005737'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0005829`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0005829'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0070062`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0070062'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0001758`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0001758'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0004033`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0004033'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0009055`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0009055'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0015125`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0015125'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0016655`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0016655'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0047023`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0047023'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0047743`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0047743'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+	<dt>$`6718`</dt>
+		<dd><dl>
+	<dt>$`GO:0006699`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0006699'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0006699`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0006699'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0006707`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0006707'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0007586`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0007586'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0008207`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0008207'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0008209`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0008209'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0030573`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0030573'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0055114`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0055114'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'BP'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0005829`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0005829'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0005829`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0005829'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0070062`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0070062'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IDA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'CC'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0004033`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0004033'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0005496`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0005496'</dd>
+	<dt>$Evidence</dt>
+		<dd>'TAS'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+	<dt>$`GO:0047787`</dt>
+		<dd><dl>
+	<dt>$GOID</dt>
+		<dd>'GO:0047787'</dd>
+	<dt>$Evidence</dt>
+		<dd>'IEA'</dd>
+	<dt>$Ontology</dt>
+		<dd>'MF'</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+
+
+```R
+
+```
