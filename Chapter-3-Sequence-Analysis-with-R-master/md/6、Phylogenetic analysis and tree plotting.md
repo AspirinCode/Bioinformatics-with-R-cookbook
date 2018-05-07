@@ -114,7 +114,7 @@ plot(myphylo, type="phylogram", edge.color="red", cex=1, edge.width=1,main="(A) 
 ```
 
 
-[plot](https://github.com/Chengshu21/Chapter-3-Sequence-Analysis-with-R/blob/master/md/output_7-Phylogenetic%20analysis%20and%20tree%20plotting.png)
+[plot](https://github.com/Chengshu21/Bioinformatics-with-R-cookbook/blob/master/Chapter-3-Sequence-Analysis-with-R-master/md/output_7-Phylogenetic%20analysis%20and%20tree%20plotting.png)
 
 
 
@@ -123,7 +123,7 @@ plot(myphylo, type="cladogram", edge.color="red", cex=1, edge.width=1, main="(B)
 ```
 
 
-[plot](https://github.com/Chengshu21/Chapter-3-Sequence-Analysis-with-R/blob/master/md/output_8-Phylogenetic%20analysis%20and%20tree%20plotting.png)
+[plot](https://github.com/Chengshu21/Bioinformatics-with-R-cookbook/blob/master/Chapter-3-Sequence-Analysis-with-R-master/md/output_8-Phylogenetic%20analysis%20and%20tree%20plotting.png)
 
 
 
@@ -132,7 +132,7 @@ plot(myphylo, type="fan", edge.color="red", cex=1, edge.width=1, main="(C) Fan")
 ```
 
 
-[plot](https://github.com/Chengshu21/Chapter-3-Sequence-Analysis-with-R/blob/master/md/output_9-Phylogenetic%20analysis%20and%20tree%20plotting.png)
+[plot](https://github.com/Chengshu21/Bioinformatics-with-R-cookbook/blob/master/Chapter-3-Sequence-Analysis-with-R-master/md/output_9-Phylogenetic%20analysis%20and%20tree%20plotting.png)
 
 
 
@@ -141,7 +141,7 @@ plot(myphylo, type="unrooted", edge.color="red", cex=1, edge.width=1, main="(D) 
 ```
 
 
-[plot](https://github.com/Chengshu21/Chapter-3-Sequence-Analysis-with-R/blob/master/md/output_10-Phylogenetic%20analysis%20and%20tree%20plotting.png)
+[plot](https://github.com/Chengshu21/Bioinformatics-with-R-cookbook/blob/master/Chapter-3-Sequence-Analysis-with-R-master/md/output_10-Phylogenetic%20analysis%20and%20tree%20plotting.png)
 
 
 
