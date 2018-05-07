@@ -9277,7 +9277,7 @@ dotPlot(myseq[[1]], myseq[[2]], col=c("white", "red"), xlab="Human", ylab="Chimp
 ```
 
 
-[plot](https://github.com/Chengshu21/Chapter-3-Sequence-Analysis-with-R/blob/master/md/output-Pairwise%20sequence%20alignment.png)
+[plot](https://github.com/Chengshu21/Bioinformatics-with-R-cookbook/blob/master/Chapter-3-Sequence-Analysis-with-R-master/md/output-Pairwise%20sequence%20alignment.png)
 
 
 
